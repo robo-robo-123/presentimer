@@ -1,0 +1,103 @@
+﻿<Page
+    x:Class="CDTimer.CountPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CDTimer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+  
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+      <!--
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="100" />
+      <RowDefinition Height="200" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+-->
+
+    <RelativePanel HorizontalAlignment="Center" VerticalAlignment="Center">
+    <TextBlock x:Name="infoBlock" Grid.Row="1" x:Uid="LabelTitle" Text="！残り時間" FontSize="100" />
+    <TextBlock x:Name="timeBlock" Grid.Row="2"  Text="00:00" FontSize="200"  RelativePanel.Below="infoBlock"/>
+    </RelativePanel>
+
+    <CommandBar VerticalAlignment="Bottom" >
+
+      <AppBarButton x:Name="backToWindowsButton" x:Uid="btw" Label="全画面解除" Click="Button_Click">
+        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE73F;" />
+      </AppBarButton>
+
+      <AppBarButton x:Name="fullScreenButton" x:Uid="fs" Label="全画面化" Visibility="Collapsed" Click="fullScreenButton_Click">
+        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE740;" />
+      </AppBarButton>
+
+      <AppBarButton x:Name="stopButton" x:Uid="Stop" Label="終了" Click="stopButton_Click" >
+        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE711;" />
+      </AppBarButton>
+
+      <AppBarButton x:Name="startButton" x:Uid="Start" Label="開始" Visibility="Collapsed"  Click="startButton_Click"  >
+        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE768;" />
+      </AppBarButton>
+
+      <AppBarButton x:Name="pauseButton" x:Uid="Pause"  Label="一次停止"  Click="pauseButton_Click">
+        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE769;" />
+      </AppBarButton>
+
+      <AppBarButton x:Name="Button" x:Uid="Reset" Label="リセット" Click="resetButton_Click"  >
+        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE72C;" />
+      </AppBarButton>      
+      
+    </CommandBar>
+
+    <MediaElement x:Name="SoundGoo" Source="/Source/test.mp3" AutoPlay="False" />
+    <MediaElement x:Name="SoundGoo2" Source="/Source/test.mp3" AutoPlay="False" />
+
+    <VisualStateManager.VisualStateGroups>
+      <VisualStateGroup x:Name="WindowStates">
+        <VisualState x:Name="WideState">
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowHeight="400" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="infoBlock.FontSize" Value="100" />
+            <Setter Target="timeBlock.FontSize" Value="200" />
+          </VisualState.Setters>
+        </VisualState>
+        <VisualState x:Name="WideState2">
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowWidth="800" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="infoBlock.FontSize" Value="100" />
+            <Setter Target="timeBlock.FontSize" Value="200" />
+          </VisualState.Setters>
+        </VisualState>
+        <VisualState x:Name="NarrowState2">
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowWidth="0" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="infoBlock.FontSize" Value="80" />
+            <Setter Target="timeBlock.FontSize" Value="150" />
+          </VisualState.Setters>
+        </VisualState>
+        <VisualState x:Name="NarrowState">
+          <VisualState.StateTriggers>
+            <AdaptiveTrigger MinWindowHeight="0" />
+          </VisualState.StateTriggers>
+          <VisualState.Setters>
+            <Setter Target="infoBlock.FontSize" Value="80" />
+            <Setter Target="timeBlock.FontSize" Value="150" />
+          </VisualState.Setters>
+        </VisualState>
+      </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+
+
+
+
+  </Grid>
+</Page>
