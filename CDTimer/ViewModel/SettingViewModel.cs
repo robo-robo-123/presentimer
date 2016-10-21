@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CDTimer.Model;
+using System.ComponentModel;
 
 namespace CDTimer.ViewModel
 {
-  public class SettingViewModel : Common.BindableBase
+  public class SettingViewModel : Common.BindableBase//, IDisposable
   {
     private Model.SettingModel Model { get; } = SettingModel.Instance;
 
@@ -131,12 +132,33 @@ namespace CDTimer.ViewModel
     }
 
     //
+    public Windows.UI.Xaml.Media.Brush ForegroundColor
+    {
+      get { return this.Model.ForegroundColor; }
+      set { this.Model.ForegroundColor = value; }
+    }
+
+    public void foretest()
+    {
+      this.Model.foretest();
+    }
+
+
 
     public void Test()
     {
       this.Model.SaveCount();
     }
 
+    public SettingViewModel()
+    {
+      this.Model.PropertyChanged += this.SettingViewModel_PropertyChanged;
+    }
+
+    private void SettingViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+      this.OnPropertyChanged(e.PropertyName);
+    }
 
   }
 }

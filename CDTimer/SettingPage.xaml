@@ -37,7 +37,8 @@
       -->
       <RelativePanel>
       <StackPanel x:Name="previewPanel" Margin="20,20,0,0" Height="230">
-        <TextBlock x:Uid="PreviewTitle" Text="テスト再生(10倍速)?" FontSize="30" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+        <TextBlock x:Uid="PreviewTitle" Text="テスト再生(10倍速)?" FontSize="30" HorizontalAlignment="Left" Margin="0,0,0,10"  Foreground="{x:Bind ViewModel.ForegroundColor, Mode=OneWay}"/>
+        <TextBlock x:Name="testblock"  Text="this is test" HorizontalAlignment="Left" Margin="0,0,0,10" />
 
         <TextBlock x:Name="titleBlock"  x:Uid="LabelTitle" Text="残り時間?" FontSize="36" KeyDown="titleText_KeyDown"/>
 
@@ -75,7 +76,7 @@
           <!--Text="{x:Bind ViewModel.FirstTitle, Mode=TwoWay}"-->
             <TimePicker x:Name="testTime" x:Uid="TimeInput"  Header="カウント時間の設定?" TimeChanged="testTime_TimeChanged"/>
 
-            <ComboBox x:Name="colorCombo" Margin="0,20,0,0" SelectionChanged="colorCombo_SelectionChanged" SelectedIndex="{x:Bind ViewModel.ColorsIndex, Mode=TwoWay}" x:Uid="ColorInput" Header="!文字色の設定" >
+            <ComboBox x:Name="colorCombo" Margin="0,20,0,0" SelectionChanged="{x:Bind ViewModel.foretest}" SelectedIndex="{x:Bind ViewModel.ColorsIndex, Mode=TwoWay}" x:Uid="ColorInput" Header="!文字色の設定" >
             <ComboBoxItem Content="Green" Foreground="Green"/>
             <ComboBoxItem Content="Yellow" Foreground="Yellow"/>
             <ComboBoxItem Content="Red" Foreground="Red"/>

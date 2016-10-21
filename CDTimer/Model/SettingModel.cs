@@ -10,6 +10,7 @@ namespace CDTimer.Model
   public class SettingModel : Common.BindableBase
   {
     public static SettingModel Instance { get; } = new SettingModel();
+    Common.CommonClass conv = new Common.CommonClass();
 
     //first
     private string firstTitle;
@@ -146,6 +147,28 @@ namespace CDTimer.Model
       get { return this.colorsInfo; }
       set { this.SetProperty(ref this.colorsInfo, value); }
     }
+
+
+
+    public void foretest()
+    {
+      //int index = ViewModel.ColorsIndex2;
+      var color = conv.selectColor(ColorsIndex);
+      this.ForegroundColor = color;
+    }
+
+
+    private Windows.UI.Xaml.Media.Brush foregroundColor;
+    //this.foregroundColor = Windows.UI.Xaml.Media.SolidColorBrush(Windows.UI.Colors.Green);
+    //_foregroundColor = Windows.UI.Xaml.Media.Brush.
+
+    public Windows.UI.Xaml.Media.Brush ForegroundColor
+    {
+      get { return foregroundColor; }
+      set { this.SetProperty(ref this.foregroundColor, value); }
+    }
+
+
 
 
     public void SaveCount()
