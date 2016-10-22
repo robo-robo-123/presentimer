@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Graphics.Display;
 using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -28,28 +29,29 @@ namespace CDTimer
     public ViewModel.SettingViewModel ViewModel { get; } = new ViewModel.SettingViewModel();
 
 
-    DispatcherTimer dispatcherTimer;    // タイマーオブジェクト
-    DateTime StartTime;                 // カウント開始時刻
+    //DispatcherTimer dispatcherTimer;    // タイマーオブジェクト
+    //DateTime StartTime;                 // カウント開始時刻
 
     Common.CommonClass conv = new Common.CommonClass();
-    private int _count;
-    private int time;
+    //private int _count;
+    //private int time;
 
     public SettingPage()
     {
       this.InitializeComponent();
 
       // コンポーネントの状態を初期化　
-      lblTime.Text = "00:00:00";
+      //lblTime.Text = "00:00:00";
       btnStart.IsEnabled = true;
       btnStop.IsEnabled = false;
       btnReset.IsEnabled = true;
 
+      /*
       // タイマーのインスタンスを生成
       dispatcherTimer = new DispatcherTimer();
       dispatcherTimer.Interval = TimeSpan.FromMilliseconds(100);
       dispatcherTimer.Tick += dispatcherTimer_Tick;
-
+      */
 
       TimeSpan ts;
       ts = new TimeSpan(0, (int)ViewModel.TimesIndex, 0);
@@ -57,10 +59,8 @@ namespace CDTimer
       ts = new TimeSpan(0, (int)ViewModel.TimesIndex2, 0);
       secondTime.Time = ts;
 
+
       //一番最初の初期化
-
-      // タイマー開始
-
       //default設定
       ViewModel.FirstTitle = firstText.Text;
       ViewModel.SecondTitle = secondText.Text;
@@ -70,8 +70,13 @@ namespace CDTimer
       if (ViewModel.PreBellValue == null)
         prebellMinutesCombo1.SelectedIndex = 0;
 
-      TimerReset();
+      this.ViewModel.TimerReset();
 
+    }
+
+    private void OnNavigatedTo(object sender, NavigationEventArgs e)
+    {
+      DisplayInformation.AutoRotationPreferences = DisplayOrientations.Portrait;
     }
 
     /// <summary>
@@ -89,159 +94,7 @@ namespace CDTimer
       this.Frame.Navigate(typeof(InfoPage));
     }
 
-    /// <summary>
-    /// 時間の処理
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
 
-    private void SecondTime()
-    {
-
-      TimeSpan ts2 = new TimeSpan(0, (int)ViewModel.TimesIndex2, 0);
-      _count = (int)ts2.TotalSeconds;
-      if (_count == 0)
-      {
-        time++;
-        ThirdTime();
-      }
-      else
-      {
-        time++;
-        int index = ViewModel.ColorsIndex2;
-        var color = conv.selectColor(index);
-        this.lblTime.Foreground = color;
-        titleBlock.Foreground = color;
-        titleBlock.Text = ViewModel.SecondTitle;
-      }
-
-    }
-
-    private void ThirdTime()
-    {
-      time++;
-      int index = ViewModel.ColorsIndex3;
-      var color = conv.selectColor(index);
-      this.lblTime.Foreground = color;
-        titleBlock.Foreground = color;
-        titleBlock.Text = ViewModel.ThirdTitle;
-      _count = 0;
-    }
-
-    private async void playsound(int index)
-    {
-
-      if(index == 1)
-      {
-        this.SoundGoo.Play();
-        await Task.Delay(300);
-      }
-      else if (index == 2)
-      {
-        this.SoundGoo2.Play();
-        await Task.Delay(300);
-        this.SoundGoo2.Stop();
-
-        this.SoundGoo.Play();
-        await Task.Delay(300);
-      }
-      else if(index == 3)
-      {
-        this.SoundGoo.Play();
-        await Task.Delay(300);
-        this.SoundGoo.Stop();
-
-        this.SoundGoo2.Play();
-        await Task.Delay(300);
-        this.SoundGoo2.Stop();
-
-        this.SoundGoo.Play();
-        await Task.Delay(300);
-      }
-      else if (index == 4)
-      {
-        this.SoundGoo2.Play();
-        await Task.Delay(300);
-        this.SoundGoo2.Stop();
-
-        this.SoundGoo.Play();
-        await Task.Delay(300);
-        this.SoundGoo.Stop();
-
-        this.SoundGoo2.Play();
-        await Task.Delay(300);
-        this.SoundGoo2.Stop();
-
-        this.SoundGoo.Play();
-        await Task.Delay(300);
-      }
-      else if(index == 5)
-      {
-        this.SoundGoo.Play();
-        await Task.Delay(300);
-        this.SoundGoo.Stop();
-
-        this.SoundGoo2.Play();
-        await Task.Delay(300);
-        this.SoundGoo2.Stop();
-
-        this.SoundGoo.Play();
-        await Task.Delay(300);
-        this.SoundGoo.Stop();
-
-        this.SoundGoo2.Play();
-        await Task.Delay(300);
-        this.SoundGoo2.Stop();
-
-        this.SoundGoo.Play();
-        await Task.Delay(300);
-      }
-
-    }
-
-    private void dispatcherTimer_Tick(object sender, object e)
-    {
-
-      if (time == 0)
-      {
-        this._count--;
-        TimeSpan ts = new TimeSpan(0, 0, _count);
-        lblTime.Text = ts.ToString();
-        if(_count == (ViewModel.PreBellMinutesIndex)*60 && ViewModel.PreBellMinutesIndex != 0)
-        {
-          playsound(int.Parse(ViewModel.PreBellValue));
-        }
-        if (_count == 0)
-        {
-          playsound(ViewModel.EndBellIndex + 1);
-          SecondTime();
-        }
-          
-      }
-      else if (time == 1)
-      {
-        this._count--;
-        TimeSpan ts = new TimeSpan(0, 0, _count);
-        lblTime.Text = ts.ToString();
-        if (_count == 0)
-        {
-          playsound(ViewModel.EndBellIndex2 + 1);
-          ThirdTime();
-        }
-      }
-      else if (time == 2)
-      {
-        this._count++;
-        TimeSpan ts = new TimeSpan(0, 0, _count);
-        lblTime.Text = ts.ToString();
-      }
-
-    }
-
-    private void chaime()
-    {
-      
-    }
 
     // ボタンクリック時の処理分岐
     private void Button_Click(object sender, RoutedEventArgs e)
@@ -258,7 +111,8 @@ namespace CDTimer
           break;
 
         case "btnReset":
-          TimerReset();
+          //TimerReset();
+          ViewModel.TimerReset();
           break;
 
       }
@@ -270,8 +124,9 @@ namespace CDTimer
       btnStart.IsEnabled = false;
       btnStop.IsEnabled = true;
       btnReset.IsEnabled = false;
-      StartTime = DateTime.Now;
-      dispatcherTimer.Start();
+      //StartTime = DateTime.Now;
+      //dispatcherTimer.Start();
+      ViewModel.TimerStart();
     }
 
     // タイマー操作：停止
@@ -280,41 +135,15 @@ namespace CDTimer
       btnStart.IsEnabled = true;
       btnStop.IsEnabled = false;
       btnReset.IsEnabled = true;
-      dispatcherTimer.Stop();
+      //dispatcherTimer.Stop();
+      ViewModel.TimerStop();
     }
 
-    // タイマー操作：リセット
-    private void TimerReset()
-    {
-      TimeSpan ts = new TimeSpan(0, (int)ViewModel.TimesIndex, 0);
-      _count = (int)ts.TotalSeconds;
-      int index = ViewModel.ColorsIndex;
-      var color = conv.selectColor(index);
-      lblTime.Foreground = color;
-        titleBlock.Foreground = color;
-
-      titleBlock.Text = ViewModel.FirstTitle;
-      lblTime.Text = ts.ToString();
-
-      time = 0;
-
-      try
-      {
-        testblock.Foreground = ViewModel.ForegroundColor;
-
-      }
-      catch(Exception ex)
-      {
-
-      }
-    }
-
-      /// <summary>
-      /// 時間の設定項目
-      /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
-
+    /// <summary>
+    /// 時間の設定項目
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void testTime_TimeChanged(object sender, TimePickerValueChangedEventArgs e)
     {
       if (((TimePicker)sender).Name == "testTime")
@@ -351,8 +180,7 @@ namespace CDTimer
 
     private void prebellMinutesCombo1_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-
-      if(((ComboBox)sender).SelectedIndex == 0)
+      if (((ComboBox)sender).SelectedIndex == 0)
       {
         prebellCombo1.IsEnabled = false;
         prebellCombo1.SelectedIndex = 0;
@@ -362,6 +190,7 @@ namespace CDTimer
         prebellCombo1.IsEnabled = true;
       }
     }
+
 
     /// <summary>
     /// pivot（将来的に）
@@ -377,14 +206,18 @@ namespace CDTimer
     private void mainPivot_PivotItemLoaded(Pivot sender, PivotItemEventArgs args)
     {
 
-      
+
     }
+
+
 
     /// <summary>
     /// not use
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
+    /// 
+    /*
     private void saveAllButton_Click(object sender, RoutedEventArgs e)
     {
       ViewModel.ColorsIndex = colorCombo.SelectedIndex;
@@ -394,6 +227,7 @@ namespace CDTimer
       ViewModel.HoursIndex = this.testTime.Time.Hours;
       ViewModel.TimesIndex = this.testTime.Time.TotalMinutes;
     }
+    */
 
     ///使ってない
     private void colorCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -410,6 +244,189 @@ namespace CDTimer
     {
     }
 
+
+    /// <summary>
+    /// 時間の処理
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+
+    /*
+  private void SecondTime()
+  {
+
+    TimeSpan ts2 = new TimeSpan(0, (int)ViewModel.TimesIndex2, 0);
+    _count = (int)ts2.TotalSeconds;
+    if (_count == 0)
+    {
+      time++;
+      ThirdTime();
+    }
+    else
+    {
+      time++;
+      int index = ViewModel.ColorsIndex2;
+      var color = conv.selectColor(index);
+      this.lblTime.Foreground = color;
+      titleBlock.Foreground = color;
+      titleBlock.Text = ViewModel.SecondTitle;
+    }
+
+  }
+
+  private void ThirdTime()
+  {
+    time++;
+    int index = ViewModel.ColorsIndex3;
+    var color = conv.selectColor(index);
+    this.lblTime.Foreground = color;
+      titleBlock.Foreground = color;
+      titleBlock.Text = ViewModel.ThirdTitle;
+    _count = 0;
+  }
+
+  private async void playsound(int index)
+  {
+
+    if(index == 1)
+    {
+      this.SoundGoo.Play();
+      await Task.Delay(300);
+    }
+    else if (index == 2)
+    {
+      this.SoundGoo2.Play();
+      await Task.Delay(300);
+      this.SoundGoo2.Stop();
+
+      this.SoundGoo.Play();
+      await Task.Delay(300);
+    }
+    else if(index == 3)
+    {
+      this.SoundGoo.Play();
+      await Task.Delay(300);
+      this.SoundGoo.Stop();
+
+      this.SoundGoo2.Play();
+      await Task.Delay(300);
+      this.SoundGoo2.Stop();
+
+      this.SoundGoo.Play();
+      await Task.Delay(300);
+    }
+    else if (index == 4)
+    {
+      this.SoundGoo2.Play();
+      await Task.Delay(300);
+      this.SoundGoo2.Stop();
+
+      this.SoundGoo.Play();
+      await Task.Delay(300);
+      this.SoundGoo.Stop();
+
+      this.SoundGoo2.Play();
+      await Task.Delay(300);
+      this.SoundGoo2.Stop();
+
+      this.SoundGoo.Play();
+      await Task.Delay(300);
+    }
+    else if(index == 5)
+    {
+      this.SoundGoo.Play();
+      await Task.Delay(300);
+      this.SoundGoo.Stop();
+
+      this.SoundGoo2.Play();
+      await Task.Delay(300);
+      this.SoundGoo2.Stop();
+
+      this.SoundGoo.Play();
+      await Task.Delay(300);
+      this.SoundGoo.Stop();
+
+      this.SoundGoo2.Play();
+      await Task.Delay(300);
+      this.SoundGoo2.Stop();
+
+      this.SoundGoo.Play();
+      await Task.Delay(300);
+    }
+
+  }
+
+  private void dispatcherTimer_Tick(object sender, object e)
+  {
+
+    if (time == 0)
+    {
+      this._count--;
+      TimeSpan ts = new TimeSpan(0, 0, _count);
+      lblTime.Text = ts.ToString();
+      if(_count == (ViewModel.PreBellMinutesIndex)*60 && ViewModel.PreBellMinutesIndex != 0)
+      {
+        playsound(int.Parse(ViewModel.PreBellValue));
+      }
+      if (_count == 0)
+      {
+        playsound(ViewModel.EndBellIndex + 1);
+        SecondTime();
+      }
+
+    }
+    else if (time == 1)
+    {
+      this._count--;
+      TimeSpan ts = new TimeSpan(0, 0, _count);
+      lblTime.Text = ts.ToString();
+      if (_count == 0)
+      {
+        playsound(ViewModel.EndBellIndex2 + 1);
+        ThirdTime();
+      }
+    }
+    else if (time == 2)
+    {
+      this._count++;
+      TimeSpan ts = new TimeSpan(0, 0, _count);
+      lblTime.Text = ts.ToString();
+    }
+
+  }
+
+  private void chaime()
+  {
+
+  }
+  */
+    /*
+  // タイマー操作：リセット
+  private void TimerReset()
+  {
+    TimeSpan ts = new TimeSpan(0, (int)ViewModel.TimesIndex, 0);
+    _count = (int)ts.TotalSeconds;
+    int index = ViewModel.ColorsIndex;
+    var color = conv.selectColor(index);
+    lblTime.Foreground = color;
+      titleBlock.Foreground = color;
+
+    titleBlock.Text = ViewModel.FirstTitle;
+    lblTime.Text = ts.ToString();
+
+    time = 0;
+
+    try
+    {
+      testblock.Foreground = ViewModel.ForegroundColor;
+
+    }
+    catch(Exception ex)
+    {
+
+    }
+  }
+  */
 
   }
 }

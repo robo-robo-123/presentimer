@@ -20,8 +20,10 @@
 -->
 
     <RelativePanel HorizontalAlignment="Center" VerticalAlignment="Center">
-    <TextBlock x:Name="infoBlock" Grid.Row="1" x:Uid="LabelTitle" Text="！残り時間" FontSize="100" />
-    <TextBlock x:Name="timeBlock" Grid.Row="2"  Text="00:00" FontSize="200"  RelativePanel.Below="infoBlock"/>
+      <TextBlock x:Name="infoBlock" Grid.Row="1" x:Uid="LabelTitle" Text="{x:Bind ViewModel.TitleBlock, Mode=OneWay}"
+                  Foreground="{x:Bind ViewModel.ForegroundColor, Mode=OneWay}" FontSize="100" />
+      <TextBlock x:Name="timeBlock" Grid.Row="2"  Text="{x:Bind ViewModel.LabelTime, Mode=OneWay}" FontSize="200" 
+                 Foreground="{x:Bind ViewModel.ForegroundColor, Mode=OneWay}" RelativePanel.Below="infoBlock"/>
     </RelativePanel>
 
     <CommandBar VerticalAlignment="Bottom" >

@@ -37,12 +37,14 @@
       -->
       <RelativePanel>
       <StackPanel x:Name="previewPanel" Margin="20,20,0,0" Height="230">
-        <TextBlock x:Uid="PreviewTitle" Text="テスト再生(10倍速)?" FontSize="30" HorizontalAlignment="Left" Margin="0,0,0,10"  Foreground="{x:Bind ViewModel.ForegroundColor, Mode=OneWay}"/>
-        <TextBlock x:Name="testblock"  Text="this is test" HorizontalAlignment="Left" Margin="0,0,0,10" />
+        <TextBlock x:Uid="PreviewTitle" Text="テスト再生(10倍速)?" FontSize="30" HorizontalAlignment="Left" Margin="0,0,0,10" />
+        <!--<TextBlock x:Name="testblock"  Text="{x:Bind ViewModel.MinutesIndex, Mode=OneWay}" HorizontalAlignment="Left" Margin="0,0,0,10" />-->
 
-        <TextBlock x:Name="titleBlock"  x:Uid="LabelTitle" Text="残り時間?" FontSize="36" KeyDown="titleText_KeyDown"/>
+        <TextBlock x:Name="titleBlock"  x:Uid="LabelTitle" Text="{x:Bind ViewModel.TitleBlock, Mode=OneWay}" FontSize="36" KeyDown="titleText_KeyDown"
+                   Foreground="{x:Bind ViewModel.ForegroundColor, Mode=OneWay}"/>
 
-        <TextBlock x:Name="lblTime" Text="00:00:000" HorizontalAlignment="Left" Height="54" Margin="37,0,0,0" VerticalAlignment="Top" Width="276" FontSize="36"/>
+        <TextBlock x:Name="lblTime" Text="{x:Bind ViewModel.LabelTime, Mode=OneWay}" HorizontalAlignment="Left" Height="54" Margin="37,0,0,0" 
+                  Foreground="{x:Bind ViewModel.ForegroundColor, Mode=OneWay}" VerticalAlignment="Top" Width="276" FontSize="36"/>
 
       <StackPanel Orientation="Horizontal" >
           <!--<TextBlock x:Name="horTime" Text="00" HorizontalAlignment="Center" Height="54" Margin="0" VerticalAlignment="Top" FontSize="36"/>

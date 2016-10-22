@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace CDTimer.Model
 {
@@ -11,6 +13,44 @@ namespace CDTimer.Model
   {
     public static SettingModel Instance { get; } = new SettingModel();
     Common.CommonClass conv = new Common.CommonClass();
+    DispatcherTimer dispatcherTimer;    // タイマーオブジェクト
+    private int _count;
+    private int time;
+
+    private MediaElement element = new MediaElement();
+    private MediaElement element2 = new MediaElement();
+
+    public SettingModel()
+    {
+
+      // タイマーのインスタンスを生成
+      dispatcherTimer = new DispatcherTimer();
+      //dispatcherTimer.Interval = TimeSpan.FromMilliseconds(100);
+      dispatcherTimer.Tick += dispatcherTimer_Tick;
+
+      //初期化
+      //TimeSpan ts;
+      //this.TimeIndex = new TimeSpan(0, (int)this.TimesIndex, 0);
+      //this.TimeIndex2 = new TimeSpan(0, (int)this.TimesIndex2, 0);
+
+      //_count = 0;
+      //dispatcherTimer.Start();
+      //sound
+      settingSound();
+
+
+    }
+
+    private async void settingSound()
+    {
+      var folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Source");
+      var file = await folder.GetFileAsync("test.mp3");
+      var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+      element.SetSource(stream, "");
+      element2.SetSource(stream, "");
+      //element.Play();
+    }
+
 
     //first
     private string firstTitle;
@@ -115,6 +155,28 @@ namespace CDTimer.Model
       set { this.SetProperty(ref this.colorsIndex3, value); }
     }
 
+    //common
+    private string labelTime;
+    public string LabelTime
+    {
+      get { return this.labelTime; }
+      set { this.SetProperty(ref this.labelTime, value); }
+    }
+
+    private Windows.UI.Xaml.Media.Brush foregroundColor;
+    public Windows.UI.Xaml.Media.Brush ForegroundColor
+    {
+      get { return foregroundColor; }
+      set { this.SetProperty(ref this.foregroundColor, value); }
+    }
+
+    private string titleBlock;
+    public string TitleBlock
+    {
+      get { return this.titleBlock; }
+      set { this.SetProperty(ref this.titleBlock, value); }
+    }
+
     //not_use
     private Int32 hoursIndex;
     public Int32 HoursIndex
@@ -122,9 +184,8 @@ namespace CDTimer.Model
       get { return this.hoursIndex; }
       set { this.SetProperty(ref this.hoursIndex, value); }
     }
-
-    private Int32 minutesIndex;
-    public Int32 MinutesIndex
+    private double minutesIndex;
+    public double MinutesIndex
     {
       get { return this.minutesIndex; }
       set { this.SetProperty(ref this.minutesIndex, value); }
@@ -147,9 +208,6 @@ namespace CDTimer.Model
       get { return this.colorsInfo; }
       set { this.SetProperty(ref this.colorsInfo, value); }
     }
-
-
-
     public void foretest()
     {
       //int index = ViewModel.ColorsIndex2;
@@ -158,16 +216,169 @@ namespace CDTimer.Model
     }
 
 
-    private Windows.UI.Xaml.Media.Brush foregroundColor;
-    //this.foregroundColor = Windows.UI.Xaml.Media.SolidColorBrush(Windows.UI.Colors.Green);
-    //_foregroundColor = Windows.UI.Xaml.Media.Brush.
-
-    public Windows.UI.Xaml.Media.Brush ForegroundColor
+    //timecount
+    public void TimerStart()
     {
-      get { return foregroundColor; }
-      set { this.SetProperty(ref this.foregroundColor, value); }
+      dispatcherTimer.Interval = TimeSpan.FromMilliseconds(100);
+      dispatcherTimer.Start();
     }
 
+    public void MainTimerStart()
+    {
+      dispatcherTimer.Interval = TimeSpan.FromSeconds(1);
+      dispatcherTimer.Start();
+    }
+
+    public void TimerStop()
+    {
+      dispatcherTimer.Stop();
+    }
+
+    public void TimerReset()
+    {
+      TimeSpan ts = new TimeSpan(0, (int)this.TimesIndex, 0);
+      _count = (int)ts.TotalSeconds;
+      this.LabelTime = ts.ToString();
+      var color = conv.selectColor(ColorsIndex);
+      this.ForegroundColor = color;
+      this.TitleBlock = this.FirstTitle;
+      time = 0;
+    }
+
+    private async void playsound(int index)
+    {
+
+      if (index == 1)
+      {
+        this.element.Play();
+        await Task.Delay(300);
+      }
+      else if (index == 2)
+      {
+        this.element.Play();
+        await Task.Delay(300);
+
+        this.element2.Play();
+        await Task.Delay(300);
+      }
+      else if (index == 3)
+      {
+        this.element.Play();
+        await Task.Delay(300);
+        this.element.Stop();
+
+        this.element2.Play();
+        await Task.Delay(300);
+
+        this.element.Play();
+        await Task.Delay(300);
+      }
+      else if (index == 4)
+      {
+        this.element.Play();
+        await Task.Delay(300);
+        this.element.Stop();
+
+        this.element.Play();
+        await Task.Delay(300);
+        this.element.Stop();
+
+        this.element.Play();
+        await Task.Delay(300);
+        this.element.Stop();
+
+        this.element.Play();
+        await Task.Delay(300);
+      }
+      else if (index == 5)
+      {
+        this.element.Play();
+        await Task.Delay(300);
+        this.element.Stop();
+
+        this.element.Play();
+        await Task.Delay(300);
+        this.element.Stop();
+
+        this.element.Play();
+        await Task.Delay(300);
+        this.element.Stop();
+
+        this.element.Play();
+        await Task.Delay(300);
+        this.element.Stop();
+
+        this.element.Play();
+        await Task.Delay(300);
+      }
+
+    }
+
+    private void dispatcherTimer_Tick(object sender, object e)
+    {
+      //this._count++;
+      //TimeSpan ts = new TimeSpan(0, 0, _count);
+      //this.MinutesIndex = ts.TotalSeconds;
+      if (time == 0)
+      {
+        this._count--;
+        TimeSpan ts = new TimeSpan(0, 0, _count);
+        this.LabelTime = ts.ToString();
+        if (_count == (this.PreBellMinutesIndex) * 60 && this.PreBellMinutesIndex != 0)
+        {
+          playsound(int.Parse(this.PreBellValue));
+        }
+        if (_count == 0)
+        {
+          playsound(this.EndBellIndex + 1);
+          SecondTime();
+        }
+      }
+      else if (time == 1)
+      {
+        this._count--;
+        TimeSpan ts = new TimeSpan(0, 0, _count);
+        this.LabelTime = ts.ToString();
+        if (_count == 0)
+        {
+          playsound(this.EndBellIndex2 + 1);
+          ThirdTime();
+        }
+      }
+      else if (time == 2)
+      {
+        this._count++;
+        TimeSpan ts = new TimeSpan(0, 0, _count);
+        this.LabelTime = ts.ToString();
+      }
+    }
+
+    private void SecondTime()
+    {
+      TimeSpan ts2 = new TimeSpan(0, (int)this.TimesIndex2, 0);
+      _count = (int)ts2.TotalSeconds;
+      if (_count == 0)
+      {
+        time++;
+        ThirdTime();
+      }
+      else
+      {
+        time++;
+        var color = conv.selectColor(ColorsIndex2);
+        this.ForegroundColor = color;
+        this.TitleBlock = this.SecondTitle;
+      }
+    }
+
+    private void ThirdTime()
+    {
+      time++;
+      var color = conv.selectColor(ColorsIndex3);
+      this.ForegroundColor = color;
+        this.TitleBlock = this.ThirdTitle;
+      _count = 0;
+    }
 
 
 
@@ -295,7 +506,7 @@ namespace CDTimer.Model
       }
       if (settings.Values.TryGetValue("minutes_index", out temp))
       {
-        this.MinutesIndex = (Int32)temp;
+        this.MinutesIndex = (double)temp;
       }
       if (settings.Values.TryGetValue("times_index3", out temp))
       {

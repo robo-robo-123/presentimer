@@ -102,6 +102,24 @@ namespace CDTimer.ViewModel
       set { this.Model.ColorsIndex3 = value; }
     }
 
+    //common
+    public string LabelTime
+    {
+      get { return this.Model.LabelTime; }
+      set { this.Model.LabelTime = value; }
+    }
+
+    public string TitleBlock
+    {
+      get { return this.Model.TitleBlock; }
+      set { this.Model.TitleBlock = value; }
+    }
+
+    public Windows.UI.Xaml.Media.Brush ForegroundColor
+    {
+      get { return this.Model.ForegroundColor; }
+      set { this.Model.ForegroundColor = value; }
+    }
 
 
     //not_use 
@@ -110,7 +128,7 @@ namespace CDTimer.ViewModel
       get { return this.Model.HoursIndex; }
       set { this.Model.HoursIndex = value; }
     }
-    public Int32 MinutesIndex
+    public double MinutesIndex
     {
       get { return this.Model.MinutesIndex; }
       set { this.Model.MinutesIndex = value; }
@@ -132,18 +150,32 @@ namespace CDTimer.ViewModel
     }
 
     //
-    public Windows.UI.Xaml.Media.Brush ForegroundColor
-    {
-      get { return this.Model.ForegroundColor; }
-      set { this.Model.ForegroundColor = value; }
-    }
+
 
     public void foretest()
     {
       this.Model.foretest();
     }
 
+    public void TimerStart()
+    {
+      this.Model.TimerStart();
+    }
 
+    public void MainTimerStart()
+    {
+      this.Model.MainTimerStart();
+    }
+
+    public void TimerStop()
+    {
+      this.Model.TimerStop();
+    }
+
+    public void TimerReset()
+    {
+      this.Model.TimerReset();
+    }
 
     public void Test()
     {
