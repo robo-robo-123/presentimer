@@ -201,4 +201,7 @@
   <data name="TimeInput.Header" xml:space="preserve">
     <value>カウント時間の設定</value>
   </data>
+  <data name="AppName" xml:space="preserve">
+    <value>ぷれぜんたいまー</value>
+  </data>
 </root>

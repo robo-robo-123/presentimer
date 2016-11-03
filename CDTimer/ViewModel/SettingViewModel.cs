@@ -31,7 +31,6 @@ namespace CDTimer.ViewModel
       set { this.Model.ColorsIndex = value; }
     }
 
-
     public Int32 PreBellIndex
     {
       get { return this.Model.PreBellIndex; }
@@ -121,7 +120,7 @@ namespace CDTimer.ViewModel
       set { this.Model.ForegroundColor = value; }
     }
 
-
+    /*
     //not_use 
     public Int32 HoursIndex
     {
@@ -151,11 +150,11 @@ namespace CDTimer.ViewModel
 
     //
 
-
     public void foretest()
     {
       this.Model.foretest();
     }
+    */
 
     public void TimerStart()
     {

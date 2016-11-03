@@ -78,7 +78,7 @@
           <!--Text="{x:Bind ViewModel.FirstTitle, Mode=TwoWay}"-->
             <TimePicker x:Name="testTime" x:Uid="TimeInput"  Header="カウント時間の設定?" TimeChanged="testTime_TimeChanged"/>
 
-            <ComboBox x:Name="colorCombo" Margin="0,20,0,0" SelectionChanged="{x:Bind ViewModel.foretest}" SelectedIndex="{x:Bind ViewModel.ColorsIndex, Mode=TwoWay}" x:Uid="ColorInput" Header="!文字色の設定" >
+            <ComboBox x:Name="colorCombo" Margin="0,20,0,0" SelectedIndex="{x:Bind ViewModel.ColorsIndex, Mode=TwoWay}" x:Uid="ColorInput" Header="!文字色の設定" >
             <ComboBoxItem Content="Green" Foreground="Green"/>
             <ComboBoxItem Content="Yellow" Foreground="Yellow"/>
             <ComboBoxItem Content="Red" Foreground="Red"/>

@@ -19,6 +19,7 @@ namespace CDTimer.Model
 
     private MediaElement element = new MediaElement();
     private MediaElement element2 = new MediaElement();
+    private Windows.Storage.Streams.IRandomAccessStream stream;
 
     public SettingModel()
     {
@@ -45,7 +46,7 @@ namespace CDTimer.Model
     {
       var folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Source");
       var file = await folder.GetFileAsync("test.mp3");
-      var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+      stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
       element.SetSource(stream, "");
       element2.SetSource(stream, "");
       //element.Play();
@@ -178,6 +179,7 @@ namespace CDTimer.Model
     }
 
     //not_use
+    /*
     private Int32 hoursIndex;
     public Int32 HoursIndex
     {
@@ -214,6 +216,7 @@ namespace CDTimer.Model
       var color = conv.selectColor(ColorsIndex);
       this.ForegroundColor = color;
     }
+    */
 
 
     //timecount
@@ -247,17 +250,22 @@ namespace CDTimer.Model
 
     private async void playsound(int index)
     {
+      //element.SetSource(stream, "");
+      //element2.SetSource(stream, "");
 
       if (index == 1)
       {
         this.element.Play();
+        //element.SetSource(stream, "");
         await Task.Delay(300);
       }
       else if (index == 2)
       {
+        //element.SetSource(stream, "");
         this.element.Play();
         await Task.Delay(300);
 
+        //element2.SetSource(stream, "");
         this.element2.Play();
         await Task.Delay(300);
       }
@@ -279,15 +287,14 @@ namespace CDTimer.Model
         await Task.Delay(300);
         this.element.Stop();
 
-        this.element.Play();
+        this.element2.Play();
         await Task.Delay(300);
-        this.element.Stop();
+        this.element2.Stop();
 
         this.element.Play();
         await Task.Delay(300);
-        this.element.Stop();
 
-        this.element.Play();
+        this.element2.Play();
         await Task.Delay(300);
       }
       else if (index == 5)
@@ -296,17 +303,16 @@ namespace CDTimer.Model
         await Task.Delay(300);
         this.element.Stop();
 
-        this.element.Play();
+        this.element2.Play();
         await Task.Delay(300);
-        this.element.Stop();
+        this.element2.Stop();
 
         this.element.Play();
         await Task.Delay(300);
         this.element.Stop();
 
-        this.element.Play();
+        this.element2.Play();
         await Task.Delay(300);
-        this.element.Stop();
 
         this.element.Play();
         await Task.Delay(300);
@@ -404,10 +410,12 @@ namespace CDTimer.Model
       settings.Values["third_title"] = this.ThirdTitle;
       settings.Values["colors_index3"] = this.ColorsIndex3;
       //notuse
+      /*
       settings.Values["hours_index"] = this.HoursIndex;
       settings.Values["minutes_index"] = this.MinutesIndex;
       settings.Values["times_index3"] = this.TimesIndex3;
       settings.Values["end_bell_index3"] = this.EndBellIndex3;
+      */
 
     }
 
@@ -415,91 +423,77 @@ namespace CDTimer.Model
     {
       var settings = ApplicationData.Current.RoamingSettings;
       var temp = default(object);
-      //first
-      if (settings.Values.TryGetValue("first_title", out temp))
+      try
       {
-        this.FirstTitle = (string)temp;
-      }
-      if (settings.Values.TryGetValue("times_index", out temp))
-      {
-        this.TimesIndex = (double)temp;
-      }
-      if (settings.Values.TryGetValue("colors_index", out temp))
-      {
-        this.ColorsIndex = (int)temp;
-      }
-      if (settings.Values.TryGetValue("pre_bell_index", out temp))
-      {
-        this.PreBellIndex = (Int32)temp;
-      }
-      if (settings.Values.TryGetValue("pre_bell_value", out temp))
-      {
-        try
+        //first
+        if (settings.Values.TryGetValue("first_title", out temp))
+        {
+          this.FirstTitle = (string)temp;
+        }
+        if (settings.Values.TryGetValue("times_index", out temp))
+        {
+          this.TimesIndex = (double)temp;
+        }
+        if (settings.Values.TryGetValue("colors_index", out temp))
+        {
+          this.ColorsIndex = (int)temp;
+        }
+        if (settings.Values.TryGetValue("pre_bell_index", out temp))
+        {
+          this.PreBellIndex = (Int32)temp;
+        }
+        if (settings.Values.TryGetValue("pre_bell_value", out temp))
         {
           this.PreBellValue = (string)temp;
         }
-        catch
-        {
-
-        }
-      }
-      if (settings.Values.TryGetValue("pre_bell_minutes_index", out temp))
-      {
-        try
+        if (settings.Values.TryGetValue("pre_bell_minutes_index", out temp))
         {
           this.PreBellMinutesIndex = (Int32)temp;
         }
-        catch
-        {
-
-        }
-      }
-      if (settings.Values.TryGetValue("pre_bell_minutes_value", out temp))
-      {
-        try
+        if (settings.Values.TryGetValue("pre_bell_minutes_value", out temp))
         {
           this.PreBellMinutesValue = (string)temp;
         }
-        catch
+        if (settings.Values.TryGetValue("end_bell_index", out temp))
         {
+          this.EndBellIndex = (Int32)temp;
+        }
 
+        //second
+        if (settings.Values.TryGetValue("second_title", out temp))
+        {
+          this.SecondTitle = (string)temp;
+        }
+        if (settings.Values.TryGetValue("times_index2", out temp))
+        {
+          this.TimesIndex2 = (double)temp;
+        }
+        if (settings.Values.TryGetValue("colors_index2", out temp))
+        {
+          this.ColorsIndex2 = (int)temp;
+        }
+        if (settings.Values.TryGetValue("end_bell_index2", out temp))
+        {
+          this.EndBellIndex2 = (Int32)temp;
+        }
+
+        //third
+        if (settings.Values.TryGetValue("third_title", out temp))
+        {
+          this.ThirdTitle = (string)temp;
+        }
+        if (settings.Values.TryGetValue("colors_index3", out temp))
+        {
+          this.ColorsIndex3 = (int)temp;
         }
       }
-      if (settings.Values.TryGetValue("end_bell_index", out temp))
+
+      catch(Exception ex)
       {
-        this.EndBellIndex = (Int32)temp;
+
       }
 
-      //second
-      if (settings.Values.TryGetValue("second_title", out temp))
-      {
-        this.SecondTitle = (string)temp;
-      }
-      if (settings.Values.TryGetValue("times_index2", out temp))
-      {
-        this.TimesIndex2 = (double)temp;
-      }
-      if (settings.Values.TryGetValue("colors_index2", out temp))
-      {
-        this.ColorsIndex2 = (int)temp;
-      }
-      if (settings.Values.TryGetValue("end_bell_index2", out temp))
-      {
-        this.EndBellIndex2 = (Int32)temp;
-      }
-
-      //third
-      if (settings.Values.TryGetValue("third_title", out temp))
-      {
-        this.ThirdTitle = (string)temp;
-      }
-      if (settings.Values.TryGetValue("colors_index3", out temp))
-      {
-        this.ColorsIndex3 = (int)temp;
-      }
-
-
-
+      /*
       if (settings.Values.TryGetValue("hours_index", out temp))
       {
         this.HoursIndex = (Int32)temp;
@@ -516,6 +510,7 @@ namespace CDTimer.Model
       {
         this.EndBellIndex3 = (Int32)temp;
       }
+      */
     }
 
   }

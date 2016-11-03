@@ -201,4 +201,7 @@
   <data name="TimeInput.Header" xml:space="preserve">
     <value>Setting this Time</value>
   </data>
+  <data name="AppName" xml:space="preserve">
+    <value>PresenTimer</value>
+  </data>
 </root>

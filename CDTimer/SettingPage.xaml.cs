@@ -52,6 +52,7 @@ namespace CDTimer
       dispatcherTimer.Interval = TimeSpan.FromMilliseconds(100);
       dispatcherTimer.Tick += dispatcherTimer_Tick;
       */
+      DisplayInformation.AutoRotationPreferences = DisplayOrientations.Portrait;
 
       TimeSpan ts;
       ts = new TimeSpan(0, (int)ViewModel.TimesIndex, 0);
