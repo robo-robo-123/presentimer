@@ -73,7 +73,8 @@ namespace CDTimer
                     // このとき、必要な情報をナビゲーション パラメーターとして渡して、新しいページを
                     //構成します
         Model.SettingModel.Instance.LoadCount();
-          rootFrame.Navigate(typeof(SettingPage), e.Arguments);
+          //rootFrame.Navigate(typeof(SettingPage), e.Arguments);
+          rootFrame.Navigate(typeof(View.MainPage), e.Arguments);
                 }
                 // 現在のウィンドウがアクティブであることを確認します
                 Window.Current.Activate();
