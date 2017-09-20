@@ -13,8 +13,24 @@ namespace CDTimer.Common
 
   }
 
+
+  public class Color
+  {
+    public string TextName { get; set; }
+    public Brush TextForeground { get; set; }
+
+    public Color(string textName, Brush textforeground)
+    {
+      this.TextName = textName;
+      this.TextForeground = textforeground;
+    }
+  }
+
   class CommonClass
   {
+
+
+
 
     public Brush selectColor(int index)
     {

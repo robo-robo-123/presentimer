@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CDTimer.Model;
 using System.ComponentModel;
+using Windows.UI.Xaml.Media;
 
 namespace CDTimer.ViewModel
 {
@@ -12,7 +13,20 @@ namespace CDTimer.ViewModel
   {
     private Model.SettingModel Model { get; } = SettingModel.Instance;
 
-    //first_time
+    //start
+    public string StartTitle
+    {
+      get { return this.Model.StartTitle; }
+      set { this.Model.StartTitle = value; }
+    }
+
+    public int ColorsIndex0
+    {
+      get { return this.Model.ColorsIndex0; }
+      set { this.Model.ColorsIndex0 = value; }
+    }
+
+    //first_section
     public string FirstTitle
     {
       get { return this.Model.FirstTitle; }
@@ -62,7 +76,7 @@ namespace CDTimer.ViewModel
     }
 
 
-    //second_time
+    //second_section
     public string SecondTitle
     {
       get { return this.Model.SecondTitle; }
@@ -155,6 +169,52 @@ namespace CDTimer.ViewModel
       this.Model.foretest();
     }
     */
+
+      //add
+    public TimeSpan FirstTimeSpan
+    {
+      get { return this.Model.FirstTimeSpan; }
+      set { this.Model.FirstTimeSpan = value; }
+    }
+
+    public TimeSpan SecondTimeSpan
+    {
+      get { return this.Model.SecondTimeSpan; }
+      set { this.Model.SecondTimeSpan = value; }
+    }
+
+    public TimeSpan ThirdTimeSpan
+    {
+      get { return this.Model.ThirdTimeSpan; }
+      set { this.Model.ThirdTimeSpan = value; }
+    }
+
+    public Brush ColorLabel2
+    {
+      get { return this.Model.ColorLabel2; }
+      set { this.Model.ColorLabel2 = value; }
+    }
+
+    /*
+    public string FirstLabel
+    {
+      get { return this.Model.LabelTime; }
+      set { this.Model.LabelTime = value; }
+    }
+
+    public string SecondLabel
+    {
+      get { return this.Model.LabelTime; }
+      set { this.Model.LabelTime = value; }
+    }
+
+    public string ThirdLabel
+    {
+      get { return this.Model.LabelTime; }
+      set { this.Model.LabelTime = value; }
+    }
+*/
+    //method
 
     public void TimerStart()
     {

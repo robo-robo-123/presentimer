@@ -9,5 +9,257 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+        <RelativePanel HorizontalAlignment="Center" VerticalAlignment="Center"  >
+            <TextBlock x:Name="infoBlock" Grid.Row="1" x:Uid="LabelTitle" Text="{x:Bind ViewModel.TitleBlock, Mode=OneWay}"
+                  Foreground="{x:Bind ViewModel.ForegroundColor, Mode=OneWay}" FontSize="100" />
+            <TextBlock x:Name="timeBlock" Grid.Row="2"  Text="{x:Bind ViewModel.LabelTime, Mode=OneWay}" FontSize="200" 
+                 Foreground="{x:Bind ViewModel.ForegroundColor, Mode=OneWay}" RelativePanel.Below="infoBlock"/>
+        </RelativePanel>
+
+        <SplitView x:Name="settingSplitView"
+                   IsPaneOpen="{Binding IsChecked, ElementName=settingButton, Mode=TwoWay}"
+                   DisplayMode="CompactOverlay"
+                   PanePlacement="Left"
+                   CompactPaneLength ="0"
+                   OpenPaneLength="350">
+            <SplitView.Pane>
+                <ScrollViewer Margin="0,0,0.0,50">
+
+                    <StackPanel >
+                        <TextBlock x:Uid="PreviewTitle" Text="テスト再生(10倍速)?" FontSize="30" HorizontalAlignment="Center"  />
+                        <TextBlock x:Name="titleBlock"  Text="{x:Bind ViewModel.TitleBlock, Mode=OneWay}" FontSize="36" Foreground="{x:Bind ViewModel.ForegroundColor, Mode=OneWay}"/>
+                        <TextBlock x:Name="lblTime" Text="{x:Bind ViewModel.LabelTime, Mode=OneWay}" Foreground="{x:Bind ViewModel.ForegroundColor, Mode=OneWay}" FontSize="36" />
+
+                        <CommandBar HorizontalAlignment="Center">
+                            <AppBarButton x:Name="previewStart" x:Uid="Start" Label="Start" ToolTipService.ToolTip="test" Icon="Play" Click="previewStart_Click"  />
+                            <AppBarButton x:Name="previewStop" x:Uid="Stop" Label="Stop" Icon="Stop" Click="previewStop_Click"  />
+                            <AppBarButton x:Name="previewReset" x:Uid="Reset" Label="Reset" Icon="Refresh" Click="previewReset_Click"  />
+                        </CommandBar>
+                        <TextBlock Text="----------------------------------------------------------" />
+
+                        <Grid>
+                            <!--
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="100" />
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        -->
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2.8*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel >
+                                <TextBlock x:Name="timeTitleBlock" Text="time" FontSize="30" HorizontalAlignment="Center"/>
+                                <TimePicker x:Name="firstTime" Header="One Section" Time="{x:Bind ViewModel.FirstTimeSpan, Mode=TwoWay}"  />
+                                <TextBlock Text="-------------------------------------------" />
+                                <TimePicker x:Name="secondTime" Header="Second Section" Time="{x:Bind ViewModel.SecondTimeSpan, Mode=TwoWay}"/>
+                                <TextBlock Text="-------------------------------------------" />
+                                <TimePicker x:Name="thirdTime" Header="Third Section" Time="{x:Bind ViewModel.ThirdTimeSpan, Mode=TwoWay}" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" >
+                                <TextBlock x:Name="bellTitleBlock" Text="bell" FontSize="30" HorizontalAlignment="Center" />
+                                <ComboBox x:Name="prebellCombo1" x:Uid="PreBelllIndex"  Header="ベル" SelectedValuePath="Content" SelectedValue="{x:Bind ViewModel.PreBellValue, Mode=TwoWay}"
+                          SelectedIndex="{x:Bind ViewModel.PreBellIndex, Mode=TwoWay}"  >
+                                    <ComboBoxItem Content="0"/>
+                                    <ComboBoxItem Content="1"/>
+                                    <ComboBoxItem Content="2"/>
+                                    <ComboBoxItem Content="3"/>
+                                    <ComboBoxItem Content="4"/>
+                                    <ComboBoxItem Content="5"/>
+                                </ComboBox>
+                                <TextBlock Text="-------------------------------------------" />
+
+
+                                <ComboBox x:Name="bellCombo_end1" x:Uid="BellInput" Header="ベル" 
+                        SelectedIndex="{x:Bind ViewModel.EndBellIndex, Mode=TwoWay}"   >
+                                    <ComboBoxItem Content="1"/>
+                                    <ComboBoxItem Content="2"/>
+                                    <ComboBoxItem Content="3"/>
+                                    <ComboBoxItem Content="4"/>
+                                    <ComboBoxItem Content="5"/>
+                                </ComboBox>
+                                <TextBlock Text="-------------------------------------------" />
+
+                                <ComboBox x:Name="bellCombo_end2" x:Uid="BellInput" Header="ベル" SelectedIndex="{x:Bind ViewModel.EndBellIndex2, Mode=TwoWay}">
+                                    <ComboBoxItem Content="1"/>
+                                    <ComboBoxItem Content="2"/>
+                                    <ComboBoxItem Content="3"/>
+                                    <ComboBoxItem Content="4"/>
+                                    <ComboBoxItem Content="5"/>
+                                </ComboBox>
+
+
+                            </StackPanel>
+
+
+                        </Grid>
+
+                        <ToggleButton x:Name="advancedSettingButton"  Content="Advanced Settings" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+                        
+                    </StackPanel>
+
+
+                </ScrollViewer>
+            </SplitView.Pane>
+        </SplitView>
+
+        <SplitView x:Name="advancedSettingSplitView"
+                   IsPaneOpen="{Binding IsChecked, ElementName=advancedSettingButton, Mode=TwoWay}"
+                   DisplayMode="CompactOverlay"
+                   PanePlacement="Left"
+                   CompactPaneLength ="0"
+                   OpenPaneLength="320">
+            <SplitView.Pane>
+
+                <ScrollViewer Margin="0,0,0.0,50">
+                    <StackPanel>
+
+                        <TextBlock Text="-----------------------------------------------" />
+                        <TextBlock x:Uid="StartSetting" Text="Start" Margin="0,0,0,0" HorizontalAlignment="Left"/>
+                        <TextBox x:Name="startText" x:Uid="StartTitle" Text="{x:Bind ViewModel.StartTitle, Mode=TwoWay}" Header="ラベルを設定してください?" Width="300" HorizontalAlignment="Left"/>
+                        <ComboBox x:Name="colorCombo0" SelectedIndex="{x:Bind ViewModel.ColorsIndex0, Mode=TwoWay}" x:Uid="ColorInput" Header="!文字色の設定" >
+                            <ComboBoxItem Content="Green" Foreground="Green"/>
+                            <ComboBoxItem Content="Yellow" Foreground="Yellow"/>
+                            <ComboBoxItem Content="Red" Foreground="Red"/>
+                        </ComboBox>
+
+                        <TextBlock Text="-----------------------------------------------" />
+                        <TextBlock x:Uid="FirstSetting" Text="First Section" Margin="0,0,0,0" HorizontalAlignment="Left"/>
+                        <TextBox x:Name="firstText" x:Uid="FirstTitle" Text="{x:Bind ViewModel.FirstTitle, Mode=TwoWay}" Header="ラベルを設定してください?" Width="300" HorizontalAlignment="Left"/>
+                        <ComboBox x:Name="colorCombo" SelectedIndex="{x:Bind ViewModel.ColorsIndex, Mode=TwoWay}" x:Uid="ColorInput" Header="!文字色の設定" >
+                            <ComboBoxItem Content="Green" Foreground="Green"/>
+                            <ComboBoxItem Content="Yellow" Foreground="Yellow"/>
+                            <ComboBoxItem Content="Red" Foreground="Red"/>
+                        </ComboBox>
+
+                        <!--
+                        
+                        <TimePicker x:Name="firstTimeA" Header="preFirst（予鈴）" Time="{x:Bind ViewModel.FirstTimeSpan, Mode=TwoWay}"  />
+                        <ComboBox x:Name="prebellCombo1" x:Uid="PreBelllIndex"  Header="鳴らすベルの回数" SelectedValuePath="Content" SelectedValue="{x:Bind ViewModel.PreBellValue, Mode=TwoWay}"
+                          SelectedIndex="{x:Bind ViewModel.PreBellIndex, Mode=TwoWay}"  >
+                            <ComboBoxItem Content="0"/>
+                            <ComboBoxItem Content="1"/>
+                            <ComboBoxItem Content="2"/>
+                            <ComboBoxItem Content="3"/>
+                            <ComboBoxItem Content="4"/>
+                            <ComboBoxItem Content="5"/>
+                        </ComboBox>
+
+                        <TimePicker x:Name="secondTimeA" Header="First（一段階）" Time="{x:Bind ViewModel.SecondTimeSpan, Mode=TwoWay}"/>
+                        <ComboBox x:Name="bellCombo_end1" x:Uid="BellInput" Header="予鈴のベルの回数" 
+                        SelectedIndex="{x:Bind ViewModel.EndBellIndex, Mode=TwoWay}"   >
+                            <ComboBoxItem Content="1"/>
+                            <ComboBoxItem Content="2"/>
+                            <ComboBoxItem Content="3"/>
+                            <ComboBoxItem Content="4"/>
+                            <ComboBoxItem Content="5"/>
+                        </ComboBox>
+                        -->
+
+
+                        <TextBlock Text="-----------------------------------------------" Margin="0,20,0,0" />
+                        <TextBlock x:Uid="SecondSetting" Text="Second Section" Margin="0,0,0,0" HorizontalAlignment="Left"/>
+                        <TextBox x:Name="secondText" x:Uid="SecondTitle" Text="{x:Bind ViewModel.SecondTitle, Mode=TwoWay}" Header="!タイトルを入力" HorizontalAlignment="Left" Width="300"/>
+
+                        <ComboBox x:Name="colorCombo2" Margin="0,20,0,0" SelectedIndex="{x:Bind ViewModel.ColorsIndex2, Mode=TwoWay}" x:Uid="ColorInput" Header="文字色を設定します" >
+
+                            <!--
+
+                            <ComboBox x:Name="colorCombo2" Margin="0,20,0,0" SelectedItem="{x:Bind  ViewModel.ColorLabel2, Mode=TwoWay }" SelectedValuePath="Foreground"  x:Uid="ColorInput" Header="文字色を設定します" >
+                                <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding TextName}" Foreground="{Binding TextForeground}"  />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                            -->
+
+                            <ComboBoxItem Content="Green" Foreground="Green"/>
+                            <ComboBoxItem Content="Yellow" Foreground="Yellow"/>
+                            <ComboBoxItem Content="Red" Foreground="Red"/>
+                        </ComboBox>
+
+                        <!--
+                        <TimePicker x:Name="thirdTimeA" Header="Third" Time="{x:Bind ViewModel.ThirdTimeSpan, Mode=TwoWay}" />
+
+                        <ComboBox x:Name="bellCombo_end2" Margin="0,20,0,0" x:Uid="BellInput" Header="!終了時にベルを何回ならしますか？" SelectedIndex="{x:Bind ViewModel.EndBellIndex2, Mode=TwoWay}">
+                            <ComboBoxItem Content="1"/>
+                            <ComboBoxItem Content="2"/>
+                            <ComboBoxItem Content="3"/>
+                            <ComboBoxItem Content="4"/>
+                            <ComboBoxItem Content="5"/>
+                        </ComboBox>
+
+                        -->
+
+                        <TextBlock Text="-----------------------------------------------" Margin="0,20,0,0" />
+                        <TextBlock x:Uid="ThirdSetting" Text="Third Section" HorizontalAlignment="Left"/>
+                        <TextBox x:Name="thirdText" x:Uid="ThirdTitle" Text="{x:Bind ViewModel.ThirdTitle, Mode=TwoWay}" Header="!タイトルを入力してください。" HorizontalAlignment="Left" Width="300"/>
+                        <ComboBox x:Name="colorCombo3" Margin="0,20,0,0" SelectedIndex="{x:Bind ViewModel.ColorsIndex3, Mode=TwoWay}" 
+                         x:Uid="ColorInput" Header="!文字色を設定します" >
+                            <ComboBoxItem Content="Green" Foreground="Green"/>
+                            <ComboBoxItem Content="Yellow" Foreground="Yellow"/>
+                            <ComboBoxItem Content="Red" Foreground="Red"/>
+                        </ComboBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </SplitView.Pane>
+        </SplitView>
+
+        <CommandBar VerticalAlignment="Bottom"  >
+
+            <!--E8B9
+
+            <AppBarButton x:Name="pinpButton">
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8B9;" />
+            </AppBarButton>
+            -->
+
+            <AppBarButton x:Name="backToWindowsButton" x:Uid="btw" Label="全画面解除" Visibility="Collapsed" Click="Button_Click">
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE73F;" />
+            </AppBarButton>
+
+            <AppBarButton x:Name="fullScreenButton" x:Uid="fs" Label="全画面化"  Click="fullScreenButton_Click">
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE740;" />
+            </AppBarButton>
+
+            <!--
+            <AppBarButton x:Name="stopButton" x:Uid="Stop" Label="終了" Click="stopButton_Click" >
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE711;" />
+            </AppBarButton>
+            -->
+
+            <AppBarButton x:Name="startButton" x:Uid="Start" Label="開始"   Click="startButton_Click"  >
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE768;" />
+            </AppBarButton>
+
+            <AppBarButton x:Name="pauseButton" x:Uid="Pause"  Label="一次停止" Visibility="Collapsed" Click="pauseButton_Click">
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE769;" />
+            </AppBarButton>
+
+            <AppBarButton x:Name="Button" x:Uid="Reset" Label="リセット" Click="resetButton_Click"  >
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE72C;" />
+            </AppBarButton>
+
+            <!--
+            <AppBarToggleButton Icon="Shuffle" Label="Shuffle" Click="AppBarButton_Click" />
+            <AppBarToggleButton Icon="RepeatAll" Label="Repeat" Click="AppBarButton_Click"/>
+            <AppBarSeparator/>
+            <AppBarButton Icon="Back" Label="Back" Click="AppBarButton_Click"/>
+            <AppBarButton Icon="Stop" Label="Stop" Click="AppBarButton_Click"/>
+            <AppBarButton Icon="Play" Label="Play" Click="AppBarButton_Click"/>
+            <AppBarButton Icon="Forward" Label="Forward" Click="AppBarButton_Click"/>
+            -->
+
+            <CommandBar.Content>
+                <AppBarToggleButton x:Name="settingButton"  Icon="Setting" />
+            </CommandBar.Content>
+
+        </CommandBar>
     </Grid>
 </Page>

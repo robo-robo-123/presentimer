@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace CDTimer.Model
 {
@@ -50,6 +51,20 @@ namespace CDTimer.Model
       element.SetSource(stream, "");
       element2.SetSource(stream, "");
       //element.Play();
+    }
+
+    //start
+    private string startTitle;
+    public string StartTitle
+    {
+      get { return this.startTitle; }
+      set { this.SetProperty(ref this.startTitle, value); }
+    }
+    private int colorsIndex0;
+    public int ColorsIndex0
+    {
+      get { return this.colorsIndex0; }
+      set { this.SetProperty(ref this.colorsIndex0, value); }
     }
 
 
@@ -178,6 +193,35 @@ namespace CDTimer.Model
       set { this.SetProperty(ref this.titleBlock, value); }
     }
 
+    //add
+    private TimeSpan firstTimeSpan;
+    public TimeSpan FirstTimeSpan
+    {
+      get { return this.firstTimeSpan; }
+      set { this.SetProperty(ref this.firstTimeSpan, value); }
+    }
+
+    private TimeSpan secondTimeSpan;
+    public TimeSpan SecondTimeSpan
+    {
+      get { return this.secondTimeSpan; }
+      set { this.SetProperty(ref this.secondTimeSpan, value); }
+    }
+
+    private TimeSpan thirdTimeSpan;
+    public TimeSpan ThirdTimeSpan
+    {
+      get { return this.thirdTimeSpan; }
+      set { this.SetProperty(ref this.thirdTimeSpan, value); }
+    }
+
+    private Brush colorLabel2;
+    public Brush ColorLabel2
+    {
+      get { return this.colorLabel2; }
+      set { this.SetProperty(ref this.colorLabel2, value); }
+    }
+
     //not_use
     /*
     private Int32 hoursIndex;
@@ -239,8 +283,10 @@ namespace CDTimer.Model
 
     public void TimerReset()
     {
-      TimeSpan ts = new TimeSpan(0, (int)this.TimesIndex, 0);
-      _count = (int)ts.TotalSeconds;
+      //TimeSpan ts = new TimeSpan(0, (int)this.TimesIndex, 0);
+      TimeSpan ts = new TimeSpan(0, 0, 0);
+      //_count = (int)ts.TotalSeconds;
+      this._count = 0;
       this.LabelTime = ts.ToString();
       var color = conv.selectColor(ColorsIndex);
       this.ForegroundColor = color;
@@ -322,19 +368,44 @@ namespace CDTimer.Model
 
     private void dispatcherTimer_Tick(object sender, object e)
     {
-      //this._count++;
-      //TimeSpan ts = new TimeSpan(0, 0, _count);
-      //this.MinutesIndex = ts.TotalSeconds;
-      if (time == 0)
+
+      this._count++;
+      TimeSpan ts = new TimeSpan(0, 0, _count);
+      this.LabelTime = ts.ToString();
+
+      if (_count == (this.FirstTimeSpan.TotalMinutes) * 60 && this.FirstTimeSpan != null)
       {
-        this._count--;
+        playsound(int.Parse(this.PreBellValue));
+      }
+
+
+      if (_count == (this.SecondTimeSpan.TotalMinutes) * 60 && this.SecondTimeSpan != null)
+      {
+        //playsound(int.Parse(this.PreBellValue));
+        playsound(this.EndBellIndex + 1);
+        var color = conv.selectColor(ColorsIndex2);
+        this.ForegroundColor = color;
+        this.TitleBlock = this.SecondTitle;
+      }
+
+      if (_count == (this.ThirdTimeSpan.TotalMinutes) * 60 && this.ThirdTimeSpan != null)
+      {
+        playsound(this.EndBellIndex2 + 1);
+        var color = conv.selectColor(ColorsIndex3);
+        this.ForegroundColor = color;
+      }
+
+      /*
+      if (time == 0)//first
+      {
+        this._count++;
         TimeSpan ts = new TimeSpan(0, 0, _count);
         this.LabelTime = ts.ToString();
-        if (_count == (this.PreBellMinutesIndex) * 60 && this.PreBellMinutesIndex != 0)
+        if (_count == (this.FirstTimeSpan.TotalMinutes) * 60 && this.FirstTimeSpan != null)
         {
           playsound(int.Parse(this.PreBellValue));
         }
-        if (_count == 0)
+        if (_count == this.SecondTimeSpan.Milliseconds )
         {
           playsound(this.EndBellIndex + 1);
           SecondTime();
@@ -342,10 +413,10 @@ namespace CDTimer.Model
       }
       else if (time == 1)
       {
-        this._count--;
+        this._count++;
         TimeSpan ts = new TimeSpan(0, 0, _count);
         this.LabelTime = ts.ToString();
-        if (_count == 0)
+        if (_count == this.SecondTimeSpan.TotalMinutes * 60 && this.SecondTimeSpan != null )
         {
           playsound(this.EndBellIndex2 + 1);
           ThirdTime();
@@ -357,6 +428,8 @@ namespace CDTimer.Model
         TimeSpan ts = new TimeSpan(0, 0, _count);
         this.LabelTime = ts.ToString();
       }
+
+      */
     }
 
     private void SecondTime()

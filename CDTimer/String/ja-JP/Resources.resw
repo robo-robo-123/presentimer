@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BellInput.Header" xml:space="preserve">
-    <value>ベルを鳴らす回数の設定</value>
+    <value>ベルの回数</value>
   </data>
   <data name="btw.Label" xml:space="preserve">
     <value>全画面解除</value>
@@ -130,10 +130,10 @@
     <value>文字色の設定</value>
   </data>
   <data name="FirstSetting.Text" xml:space="preserve">
-    <value>一つ目の設定</value>
+    <value>一区切り目の設定</value>
   </data>
   <data name="FirstTitle.Header" xml:space="preserve">
-    <value>タイトルの設定（Enterで保存）</value>
+    <value>ラベル設定</value>
   </data>
   <data name="FirstTitle.Text" xml:space="preserve">
     <value>残り発表時間</value>
@@ -154,7 +154,7 @@
     <value>一時停止します</value>
   </data>
   <data name="PreBellIndex.Header" xml:space="preserve">
-    <value>予鈴のベルを鳴らす回数の設定</value>
+    <value>ベルの回数</value>
   </data>
   <data name="PreBellTime.Header" xml:space="preserve">
     <value>予鈴の時間の設定</value>
@@ -169,10 +169,10 @@
     <value>リセットします</value>
   </data>
   <data name="SecondSetting.Text" xml:space="preserve">
-    <value>二つ目の設定</value>
+    <value>二区切り目の設定</value>
   </data>
   <data name="SecondTitle.Header" xml:space="preserve">
-    <value>タイトルの設定（Enterで保存）</value>
+    <value>ラベル設定</value>
   </data>
   <data name="SecondTitle.Text" xml:space="preserve">
     <value>質疑応答時間</value>
@@ -193,7 +193,7 @@
     <value>三つ目の設定</value>
   </data>
   <data name="ThirdTitle.Header" xml:space="preserve">
-    <value>タイトルの設定（Enterで保存）</value>
+    <value>ラベル設定</value>
   </data>
   <data name="ThirdTitle.Text" xml:space="preserve">
     <value>超過時間</value>
@@ -203,5 +203,11 @@
   </data>
   <data name="AppName" xml:space="preserve">
     <value>ぷれぜんたいまー</value>
+  </data>
+  <data name="StartTitle.Header" xml:space="preserve">
+    <value>ラベル設定</value>
+  </data>
+  <data name="StartTitle.Text" xml:space="preserve">
+    <value>残り発表時間</value>
   </data>
 </root>
