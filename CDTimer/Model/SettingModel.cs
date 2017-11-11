@@ -76,8 +76,8 @@ namespace CDTimer.Model
       set { this.SetProperty(ref this.firstTitle, value); }
     }
 
-    private double timesIndex;
-    public double TimesIndex
+    private Int32 timesIndex;
+    public Int32 TimesIndex
     {
       get { return this.timesIndex; }
       set { this.SetProperty(ref this.timesIndex, value); }
@@ -135,8 +135,8 @@ namespace CDTimer.Model
       set { this.SetProperty(ref this.secondTitle, value); }
     }
 
-    private double timesIndex2;
-    public double TimesIndex2
+    private Int32 timesIndex2;
+    public Int32 TimesIndex2
     {
       get { return this.timesIndex2; }
       set { this.SetProperty(ref this.timesIndex2, value); }
@@ -163,6 +163,15 @@ namespace CDTimer.Model
       get { return this.thirdTitle; }
       set { this.SetProperty(ref this.thirdTitle, value); }
     }
+
+    private Int32 timesIndex3;
+    public Int32 TimesIndex3
+    {
+      get { return this.timesIndex3; }
+      set { this.SetProperty(ref this.timesIndex3, value); }
+    }
+
+
 
     private int colorsIndex3;
     public int ColorsIndex3
@@ -373,24 +382,28 @@ namespace CDTimer.Model
       TimeSpan ts = new TimeSpan(0, 0, _count);
       this.LabelTime = ts.ToString();
 
-      if (_count == (this.FirstTimeSpan.TotalMinutes) * 60 && this.FirstTimeSpan != null)
+      //if (_count == (this.FirstTimeSpan.TotalMinutes) * 60 && this.FirstTimeSpan != null)
+      if (_count == (this.TimesIndex) * 60 && this.TimesIndex != 0)
       {
-        playsound(int.Parse(this.PreBellValue));
+        //playsound(int.Parse(this.PreBellValue));
+        playsound(this.PreBellIndex);
       }
 
 
-      if (_count == (this.SecondTimeSpan.TotalMinutes) * 60 && this.SecondTimeSpan != null)
+      //if (_count == (this.SecondTimeSpan.TotalMinutes) * 60 && this.SecondTimeSpan != null)
+      if (_count == (this.TimesIndex + this.TimesIndex2) * 60 && this.TimesIndex2 != 0)
       {
         //playsound(int.Parse(this.PreBellValue));
-        playsound(this.EndBellIndex + 1);
+        playsound(this.EndBellIndex);
         var color = conv.selectColor(ColorsIndex2);
         this.ForegroundColor = color;
         this.TitleBlock = this.SecondTitle;
       }
 
-      if (_count == (this.ThirdTimeSpan.TotalMinutes) * 60 && this.ThirdTimeSpan != null)
+      //if (_count == (this.ThirdTimeSpan.TotalMinutes) * 60 && this.ThirdTimeSpan != null)
+      if (_count == (this.TimesIndex + this.TimesIndex2 + this.TimesIndex3) * 60 && this.TimesIndex2 != 0)
       {
-        playsound(this.EndBellIndex2 + 1);
+        playsound(this.EndBellIndex2);
         var color = conv.selectColor(ColorsIndex3);
         this.ForegroundColor = color;
       }
@@ -505,7 +518,7 @@ namespace CDTimer.Model
         }
         if (settings.Values.TryGetValue("times_index", out temp))
         {
-          this.TimesIndex = (double)temp;
+          this.TimesIndex = (Int32)temp;
         }
         if (settings.Values.TryGetValue("colors_index", out temp))
         {
@@ -539,7 +552,7 @@ namespace CDTimer.Model
         }
         if (settings.Values.TryGetValue("times_index2", out temp))
         {
-          this.TimesIndex2 = (double)temp;
+          this.TimesIndex2 = (Int32)temp;
         }
         if (settings.Values.TryGetValue("colors_index2", out temp))
         {

@@ -33,7 +33,7 @@ namespace CDTimer.ViewModel
       set { this.Model.FirstTitle = value; }
     }
 
-    public double TimesIndex
+    public Int32 TimesIndex
     {
       get { return this.Model.TimesIndex; }
       set { this.Model.TimesIndex = value; }
@@ -83,7 +83,7 @@ namespace CDTimer.ViewModel
       set { this.Model.SecondTitle = value; }
     }
 
-    public double TimesIndex2
+    public Int32 TimesIndex2
     {
       get { return this.Model.TimesIndex2; }
       set { this.Model.TimesIndex2 = value; }
@@ -107,6 +107,12 @@ namespace CDTimer.ViewModel
     {
       get { return this.Model.ThirdTitle; }
       set { this.Model.ThirdTitle = value; }
+    }
+
+    public Int32 TimesIndex3
+    {
+      get { return this.Model.TimesIndex3; }
+      set { this.Model.TimesIndex3 = value; }
     }
 
     public int ColorsIndex3

@@ -147,10 +147,12 @@ namespace CDTimer
     /// <param name="e"></param>
     private void testTime_TimeChanged(object sender, TimePickerValueChangedEventArgs e)
     {
+            /*
       if (((TimePicker)sender).Name == "testTime")
         ViewModel.TimesIndex = ((TimePicker)sender).Time.TotalMinutes;
       else if (((TimePicker)sender).Name == "secondTime")
         ViewModel.TimesIndex2 = ((TimePicker)sender).Time.TotalMinutes;
+        */
     }
 
     private void titleText_KeyDown(object sender, KeyRoutedEventArgs e)
