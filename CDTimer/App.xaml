@@ -3,7 +3,14 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CDTimer"
-  RequestedTheme="Dark"
+    xmlns:local1="using:PresenTimer.Common"
+    RequestedTheme="Dark"
    >
 
+    <Application.Resources>
+
+        <local1:Color2BrushConverter  x:Key="Color2BrushConverter"/>
+
+    </Application.Resources>
+    
 </Application>

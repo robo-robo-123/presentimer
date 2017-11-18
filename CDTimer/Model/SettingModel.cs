@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -17,6 +18,7 @@ namespace CDTimer.Model
     DispatcherTimer dispatcherTimer;    // タイマーオブジェクト
     private int _count;
     private int time;
+    private int dispTime;
 
     private MediaElement element = new MediaElement();
     private MediaElement element2 = new MediaElement();
@@ -53,6 +55,13 @@ namespace CDTimer.Model
       //element.Play();
     }
 
+
+
+
+
+
+
+
     //start
     private string startTitle;
     public string StartTitle
@@ -60,6 +69,9 @@ namespace CDTimer.Model
       get { return this.startTitle; }
       set { this.SetProperty(ref this.startTitle, value); }
     }
+
+
+
     private int colorsIndex0;
     public int ColorsIndex0
     {
@@ -202,7 +214,15 @@ namespace CDTimer.Model
       set { this.SetProperty(ref this.titleBlock, value); }
     }
 
+    private bool uporDown;
+    public bool UporDown
+    {
+      get { return this.uporDown; }
+      set { this.SetProperty(ref this.uporDown, value); }
+    }
+
     //add
+    /*
     private TimeSpan firstTimeSpan;
     public TimeSpan FirstTimeSpan
     {
@@ -224,11 +244,70 @@ namespace CDTimer.Model
       set { this.SetProperty(ref this.thirdTimeSpan, value); }
     }
 
-    private Brush colorLabel2;
-    public Brush ColorLabel2
+            */
+
+
+    /// <summary>
+    /// カラー設定をどうにかしないといけない
+    /// </summary>
+    /// 
+
+    private Brush labelBrush0;
+    public Brush LabelBrush0
     {
-      get { return this.colorLabel2; }
-      set { this.SetProperty(ref this.colorLabel2, value); }
+      get { return this.labelBrush0; }
+      set { this.SetProperty(ref this.labelBrush0, value); }
+    }
+
+    private Brush labelBrush1;
+    public Brush LabelBrush1
+    {
+      get { return this.labelBrush1; }
+      set { this.SetProperty(ref this.labelBrush1, value); }
+    }
+
+    private Brush labelBrush2;
+    public Brush LabelBrush2
+    {
+      get { return this.labelBrush2; }
+      set { this.SetProperty(ref this.labelBrush2, value); }
+    }
+
+    private Brush labelBrush3;
+    public Brush LabelBrush3
+    {
+      get { return this.labelBrush3; }
+      set { this.SetProperty(ref this.labelBrush3, value); }
+    }
+
+
+    private Color labelColor0;
+    public Color LabelColor0
+    {
+      get { return this.labelColor0; }
+      set { this.SetProperty(ref this.labelColor0, value); }
+    }
+
+    private Color labelColor1;
+    public Color LabelColor1
+    {
+      get { return this.labelColor1; }
+      set { this.SetProperty(ref this.labelColor1, value); }
+    }
+
+
+    private Color labelColor2;
+    public Color LabelColor2
+    {
+      get { return this.labelColor2; }
+      set { this.SetProperty(ref this.labelColor2, value); }
+    }
+
+    private Color labelColor3;
+    public Color LabelColor3
+    {
+      get { return this.labelColor3; }
+      set { this.SetProperty(ref this.labelColor3, value); }
     }
 
     //not_use
@@ -292,14 +371,28 @@ namespace CDTimer.Model
 
     public void TimerReset()
     {
-      //TimeSpan ts = new TimeSpan(0, (int)this.TimesIndex, 0);
-      TimeSpan ts = new TimeSpan(0, 0, 0);
-      //_count = (int)ts.TotalSeconds;
+
+      if (UporDown == false)
+      {
+        TimeSpan ts = new TimeSpan(0, 0, 0);
+        this.dispTime = 0;
+        this.LabelTime = ts.ToString();
+      }
+      else
+      {
+        //TimeSpan ts = new TimeSpan(0, (int)this.TimesIndex, 0);
+        //_count = (int)ts.TotalSeconds;
+        TimeSpan ts = new TimeSpan(0, this.TimesIndex3, 0);//timesindex3=0の時の対応できてない
+        this.dispTime = (int)ts.TotalSeconds;
+        this.LabelTime = ts.ToString();
+      }
+
       this._count = 0;
-      this.LabelTime = ts.ToString();
+
       var color = conv.selectColor(ColorsIndex);
-      this.ForegroundColor = color;
-      this.TitleBlock = this.FirstTitle;
+      //this.ForegroundColor = color;
+      this.ForegroundColor = new SolidColorBrush(LabelColor0);
+      this.TitleBlock = this.StartTitle;
       time = 0;
     }
 
@@ -379,33 +472,42 @@ namespace CDTimer.Model
     {
 
       this._count++;
-      TimeSpan ts = new TimeSpan(0, 0, _count);
+      if (this.UporDown == false)
+      {
+        this.dispTime++;
+      }
+      else
+      {
+        this.dispTime--;
+      }
+      TimeSpan ts = new TimeSpan(0, 0, this.dispTime);
       this.LabelTime = ts.ToString();
 
-      //if (_count == (this.FirstTimeSpan.TotalMinutes) * 60 && this.FirstTimeSpan != null)
       if (_count == (this.TimesIndex) * 60 && this.TimesIndex != 0)
       {
-        //playsound(int.Parse(this.PreBellValue));
         playsound(this.PreBellIndex);
+        this.ForegroundColor = new SolidColorBrush(LabelColor1);
+        this.TitleBlock = this.FirstTitle;
       }
 
 
-      //if (_count == (this.SecondTimeSpan.TotalMinutes) * 60 && this.SecondTimeSpan != null)
-      if (_count == (this.TimesIndex + this.TimesIndex2) * 60 && this.TimesIndex2 != 0)
+      //if (_count == (this.TimesIndex + this.TimesIndex2) * 60 && this.TimesIndex2 != 0)
+      if (_count == (this.TimesIndex2) * 60 && this.TimesIndex2 != 0)
       {
-        //playsound(int.Parse(this.PreBellValue));
         playsound(this.EndBellIndex);
-        var color = conv.selectColor(ColorsIndex2);
-        this.ForegroundColor = color;
+        //var color = conv.selectColor(ColorsIndex2);
+        //this.ForegroundColor = color;
+        this.ForegroundColor = new SolidColorBrush(LabelColor2);
         this.TitleBlock = this.SecondTitle;
       }
 
-      //if (_count == (this.ThirdTimeSpan.TotalMinutes) * 60 && this.ThirdTimeSpan != null)
-      if (_count == (this.TimesIndex + this.TimesIndex2 + this.TimesIndex3) * 60 && this.TimesIndex2 != 0)
+      //if (_count == (this.TimesIndex + this.TimesIndex2 + this.TimesIndex3) * 60 && this.TimesIndex3 != 0)
+      if (_count == (this.TimesIndex3) * 60 && this.TimesIndex3 != 0)
       {
         playsound(this.EndBellIndex2);
-        var color = conv.selectColor(ColorsIndex3);
-        this.ForegroundColor = color;
+        //var color = conv.selectColor(ColorsIndex3);
+        //this.ForegroundColor = color;
+        this.ForegroundColor = new SolidColorBrush(LabelColor3);
       }
 
       /*
@@ -468,7 +570,7 @@ namespace CDTimer.Model
       time++;
       var color = conv.selectColor(ColorsIndex3);
       this.ForegroundColor = color;
-        this.TitleBlock = this.ThirdTitle;
+      this.TitleBlock = this.ThirdTitle;
       _count = 0;
     }
 
@@ -574,7 +676,7 @@ namespace CDTimer.Model
         }
       }
 
-      catch(Exception ex)
+      catch (Exception ex)
       {
 
       }

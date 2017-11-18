@@ -1,6 +1,7 @@
 ﻿using CDTimer.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -34,50 +35,62 @@ namespace CDTimer.View
 
     public SolidColorBrush color;
 
-        //    public List<int>
+    //    public List<int>
 
-        public MainPage()
-        {
-            this.InitializeComponent();
+    public MainPage()
+    {
+      this.InitializeComponent();
 
-            /*
-      List<Color> colors = new List<Color>();
+      /*
+List<Color> colors = new List<Color>();
 
-      // Add some items to collection
-      colors.Add( new Color( "Green", color = new SolidColorBrush(Windows.UI.Colors.Green) ) );
-      colors.Add( new Color( "Yellow", color = new SolidColorBrush(Windows.UI.Colors.Yellow) ) );
-      colors.Add( new Color( "Red", color = new SolidColorBrush(Windows.UI.Colors.Red) ) );
-      colors.Add( new Color( "Blue", color = new SolidColorBrush(Windows.UI.Colors.Blue) ) );
-      colors.Add( new Color( "Pink", color = new SolidColorBrush(Windows.UI.Colors.Pink) ) );
-      */
-
-
-            for (int i = 0; i <= 60; i++)
-            { 
-                timeFirst.Items.Add(i);
-                timeSecond.Items.Add(i);
-                timeThird.Items.Add(i);
-        }
-
-            for (int i = 0; i <= 5; i++)
-            {
-                bellFirst.Items.Add(i);
-                bellSecond.Items.Add(i);
-                bellThird.Items.Add(i);
-            }
-
-            //if(記録されている値がない場合
-            bellFirst.SelectedIndex = 0;
-            bellSecond.SelectedIndex = 0;
-            bellThird.SelectedIndex = 0;
-
-            timeFirst.SelectedIndex = 0;
-            timeSecond.SelectedIndex = 0;
-            timeThird.SelectedIndex = 0;
+// Add some items to collection
+colors.Add( new Color( "Green", color = new SolidColorBrush(Windows.UI.Colors.Green) ) );
+colors.Add( new Color( "Yellow", color = new SolidColorBrush(Windows.UI.Colors.Yellow) ) );
+colors.Add( new Color( "Red", color = new SolidColorBrush(Windows.UI.Colors.Red) ) );
+colors.Add( new Color( "Blue", color = new SolidColorBrush(Windows.UI.Colors.Blue) ) );
+colors.Add( new Color( "Pink", color = new SolidColorBrush(Windows.UI.Colors.Pink) ) );
+*/
 
 
-            //colorCombo2.ItemsSource = colors;
-            ViewModel.StartTitle = startText.Text;
+      for (int i = 0; i <= 60; i++)
+      {
+        timeFirst.Items.Add(i);
+        timeSecond.Items.Add(i);
+        timeThird.Items.Add(i);
+      }
+
+      for (int i = 0; i <= 5; i++)
+      {
+        bellFirst.Items.Add(i);
+        bellSecond.Items.Add(i);
+        bellThird.Items.Add(i);
+      }
+
+      //if(記録されている値がない場合
+      bellFirst.SelectedIndex = 0;
+      bellSecond.SelectedIndex = 0;
+      bellThird.SelectedIndex = 0;
+
+      timeFirst.SelectedIndex = 0;
+      timeSecond.SelectedIndex = 0;
+      timeThird.SelectedIndex = 0;
+      myColorPicker0.Color = Colors.Green;
+      myColorPicker1.Color = Colors.Green;
+      myColorPicker2.Color = Colors.Yellow;
+      myColorPicker3.Color = Colors.Red;
+
+      //if(ViewModel.LabelColor2 == null)
+      //{
+      ViewModel.LabelColor0 = myColorPicker0.Color;
+      ViewModel.LabelColor1 = myColorPicker1.Color;
+      ViewModel.LabelColor2 = myColorPicker2.Color;
+      ViewModel.LabelColor3 = myColorPicker3.Color;
+      //}
+
+
+      //colorCombo2.ItemsSource = colors;
+      ViewModel.StartTitle = startText.Text;
       ViewModel.FirstTitle = firstText.Text;
       ViewModel.SecondTitle = secondText.Text;
       ViewModel.ThirdTitle = thirdText.Text;
@@ -85,32 +98,32 @@ namespace CDTimer.View
       ViewModel.TimerReset();
 
 
-            if (ApplicationView.GetForCurrentView().IsViewModeSupported(ApplicationViewMode.CompactOverlay))
-            {
-                pinpButton.Visibility = Visibility.Visible;
-            }
+      if (ApplicationView.GetForCurrentView().IsViewModeSupported(ApplicationViewMode.CompactOverlay))
+      {
+        pinpButton.Visibility = Visibility.Visible;
+      }
 
-            var appView = ApplicationView.GetForCurrentView();
-            // タイトルバーにもUIを展開表示するための設定（これは必須ではありませんが、見た目的には必要）
-            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
-            appView.TitleBar.ButtonBackgroundColor = Colors.Transparent;
-            appView.TitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+      var appView = ApplicationView.GetForCurrentView();
+      // タイトルバーにもUIを展開表示するための設定（これは必須ではありませんが、見た目的には必要）
+      CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+      appView.TitleBar.ButtonBackgroundColor = Colors.Transparent;
+      appView.TitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
 
-        }
+    }
 
 
-        /// <summary>
-        /// count up screen
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void resetButton_Click(object sender, RoutedEventArgs e)
+    /// <summary>
+    /// count up screen
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void resetButton_Click(object sender, RoutedEventArgs e)
     {
       ViewModel.TimerStop();
       ViewModel.TimerReset();
       pauseButton.Visibility = Visibility.Collapsed;
       startButton.Visibility = Visibility.Visible;
-        }
+    }
 
     private void startButton_Click(object sender, RoutedEventArgs e)
     {
@@ -133,17 +146,17 @@ namespace CDTimer.View
       backToWindowsButton.Visibility = Visibility.Collapsed;
       fullScreenButton.Visibility = Visibility.Visible;
 
-            pinpButton.IsEnabled = true;
+      pinpButton.IsEnabled = true;
 
-        }
+    }
 
-        private void fullScreenButton_Click(object sender, RoutedEventArgs e)
+    private void fullScreenButton_Click(object sender, RoutedEventArgs e)
     {
       Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TryEnterFullScreenMode();
       fullScreenButton.Visibility = Visibility.Collapsed;
       backToWindowsButton.Visibility = Visibility.Visible;
 
-            pinpButton.IsEnabled = false;
+      pinpButton.IsEnabled = false;
     }
 
     private void previewStart_Click(object sender, RoutedEventArgs e)
@@ -172,150 +185,165 @@ namespace CDTimer.View
     }
 
 
-        /// <summary>
-        /// picture in picture
-        /// </summary>
-        /// <returns></returns>
-        private async void viewModeToggle_Click(object sender, RoutedEventArgs e)
+    /// <summary>
+    /// picture in picture
+    /// </summary>
+    /// <returns></returns>
+    private async void viewModeToggle_Click(object sender, RoutedEventArgs e)
 
-        {
+    {
 
-            viewModeToggle.IsEnabled = false;
-
-
-
-            if (viewModeToggle.IsChecked ?? false)
-
-                await EnterTopMostAsync();
-
-            else
-
-                await ExitTopMostAsync();
+      viewModeToggle.IsEnabled = false;
 
 
 
-            viewModeToggle.IsEnabled = true;
+      if (viewModeToggle.IsChecked ?? false)
 
-        }
+        await EnterTopMostAsync();
 
+      else
 
-
-        private async Task EnterTopMostAsync()
-
-        {
-
-            //var previousSize = LocalSettings.CompactOverlaySize;
-
-            //await ViewMode.EnterCompactOverlayAsync(previousSize);
-
-        }
+        await ExitTopMostAsync();
 
 
 
-        private async Task ExitTopMostAsync()
+      viewModeToggle.IsEnabled = true;
 
-        {
-
-            // LocalSettings.CompactOverlaySize = this.PageSize;
-
-            // await ViewMode.ExitCompactOverlayAsync();
-
-        }
+    }
 
 
-        /*
-                public static async Task SwitchViewModeCompactOverayAsync(bool isCompactOverlay)
+
+    private async Task EnterTopMostAsync()
+
+    {
+
+      //var previousSize = LocalSettings.CompactOverlaySize;
+
+      //await ViewMode.EnterCompactOverlayAsync(previousSize);
+
+    }
+
+
+
+    private async Task ExitTopMostAsync()
+
+    {
+
+      // LocalSettings.CompactOverlaySize = this.PageSize;
+
+      // await ViewMode.ExitCompactOverlayAsync();
+
+    }
+
+
+    /*
+            public static async Task SwitchViewModeCompactOverayAsync(bool isCompactOverlay)
+            {
+                if (!ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 4))
                 {
-                    if (!ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 4))
-                    {
-                        return;
-                    }
+                    return;
+                }
 
-                    var appView = ApplicationView.GetForCurrentView();
-                    if (appView.IsViewModeSupported(ApplicationViewMode.CompactOverlay))
+                var appView = ApplicationView.GetForCurrentView();
+                if (appView.IsViewModeSupported(ApplicationViewMode.CompactOverlay))
+                {
+                    if (isCompactOverlay)
                     {
-                        if (isCompactOverlay)
+                        // PC等1080pであればデフォルトで最大サイズ（横500px 縦280px）で表示されるが
+                        // タブレット等の小サイズ画面ではより小さい幅で表示されます
+                        // そのため任意に表示サイズを指定してください
+                        ViewModePreferences compactOptions = ViewModePreferences.CreateDefault(ApplicationViewMode.CompactOverlay);
+                        compactOptions.CustomSize = new Windows.Foundation.Size(500, 280);
+
+                        var result = await appView.TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay, compactOptions);
+                        if (result)
                         {
-                            // PC等1080pであればデフォルトで最大サイズ（横500px 縦280px）で表示されるが
-                            // タブレット等の小サイズ画面ではより小さい幅で表示されます
-                            // そのため任意に表示サイズを指定してください
-                            ViewModePreferences compactOptions = ViewModePreferences.CreateDefault(ApplicationViewMode.CompactOverlay);
-                            compactOptions.CustomSize = new Windows.Foundation.Size(500, 280);
-
-                            var result = await appView.TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay, compactOptions);
-                            if (result)
-                            {
-                                // タイトルバーにもUIを展開表示するための設定（これは必須ではありませんが、見た目的には必要）
-                                CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
-                                appView.TitleBar.ButtonBackgroundColor = Colors.Transparent;
-                                appView.TitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-                            }
+                            // タイトルバーにもUIを展開表示するための設定（これは必須ではありませんが、見た目的には必要）
+                            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+                            appView.TitleBar.ButtonBackgroundColor = Colors.Transparent;
+                            appView.TitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
                         }
-                        else
+                    }
+                    else
+                    {
+                        var result = await appView.TryEnterViewModeAsync(ApplicationViewMode.Default);
+                        if (result)
                         {
-                            var result = await appView.TryEnterViewModeAsync(ApplicationViewMode.Default);
-                            if (result)
-                            {
-                                // タイトルバーを透過表示するための設定を元に戻す
-                                CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
-                                appView.TitleBar.ButtonBackgroundColor = null;
-                                appView.TitleBar.ButtonInactiveBackgroundColor = null;
-                            }
+                            // タイトルバーを透過表示するための設定を元に戻す
+                            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
+                            appView.TitleBar.ButtonBackgroundColor = null;
+                            appView.TitleBar.ButtonInactiveBackgroundColor = null;
                         }
                     }
                 }
-        */
-
-        private async void pinpButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            ViewModePreferences compactOptions = ViewModePreferences.CreateDefault(ApplicationViewMode.CompactOverlay);
-            compactOptions.CustomSize = new Windows.Foundation.Size(500, 350);
-
-            /*
-            var result = await appView.TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay, compactOptions);
-            if (result)
-            {
-
             }
-            */
+    */
 
-            bool modeSwitched = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay, compactOptions);
-            pinpButton.Visibility = Visibility.Collapsed;
-            standardButton.Visibility = Visibility.Visible;
+    private async void pinpButton_Click(object sender, RoutedEventArgs e)
+    {
 
-            fullScreenButton.IsEnabled = false;
-        }
+      ViewModePreferences compactOptions = ViewModePreferences.CreateDefault(ApplicationViewMode.CompactOverlay);
+      compactOptions.CustomSize = new Windows.Foundation.Size(500, 350);
 
-        private async void standard(object sender, RoutedEventArgs e)
-        {
-            /*
-            var appView = ApplicationView.GetForCurrentView();
-            // タイトルバーを透過表示するための設定を元に戻す
-            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
-            appView.TitleBar.ButtonBackgroundColor = null;
-            appView.TitleBar.ButtonInactiveBackgroundColor = null;
-            */
+      /*
+      var result = await appView.TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay, compactOptions);
+      if (result)
+      {
 
-            bool modeSwitched = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.Default);
-            standardButton.Visibility = Visibility.Collapsed;
-            pinpButton.Visibility = Visibility.Visible;
+      }
+      */
 
-            fullScreenButton.IsEnabled = true;
+      bool modeSwitched = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay, compactOptions);
+      pinpButton.Visibility = Visibility.Collapsed;
+      standardButton.Visibility = Visibility.Visible;
 
-        }
+      fullScreenButton.IsEnabled = false;
+    }
 
-        /*
-        private async void compactOverlayButton_Click(object sender, RoutedEventArgs e)
-        {
-          bool modeSwitched = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay);
-        }
+    private async void standard(object sender, RoutedEventArgs e)
+    {
+      /*
+      var appView = ApplicationView.GetForCurrentView();
+      // タイトルバーを透過表示するための設定を元に戻す
+      CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
+      appView.TitleBar.ButtonBackgroundColor = null;
+      appView.TitleBar.ButtonInactiveBackgroundColor = null;
+      */
 
-        private async void standardModeButton_Click(object sender, RoutedEventArgs e)
-        {
-          bool modeSwitched = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.Default);
-        }
-        */
+      bool modeSwitched = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.Default);
+      standardButton.Visibility = Visibility.Collapsed;
+      pinpButton.Visibility = Visibility.Visible;
+
+      fullScreenButton.IsEnabled = true;
 
     }
+
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+      Debug.WriteLine(e.ToString());
+    }
+
+    private void myColorPicker_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
+    {
+      //Debug.WriteLine(args.ToString());
+
+      //ViewModel.LabelColor2 = sender.Color;
+      //ViewModel.LabelBrush1 = new SolidColorBrush(sender.Color);
+      //ViewModel.ColorLabel2 = ViewModel.GetBrush(sender.Color);
+
+    }
+
+    /*
+    private async void compactOverlayButton_Click(object sender, RoutedEventArgs e)
+    {
+      bool modeSwitched = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay);
+    }
+
+    private async void standardModeButton_Click(object sender, RoutedEventArgs e)
+    {
+      bool modeSwitched = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.Default);
+    }
+    */
+
+  }
 }
