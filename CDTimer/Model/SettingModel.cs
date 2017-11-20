@@ -17,7 +17,7 @@ namespace CDTimer.Model
     Common.CommonClass conv = new Common.CommonClass();
     DispatcherTimer dispatcherTimer;    // タイマーオブジェクト
     private int _count;
-    private int time;
+    //private int time;
     private int dispTime;
 
     private MediaElement element = new MediaElement();
@@ -56,9 +56,23 @@ namespace CDTimer.Model
     }
 
 
+    /*
+    //dust
+    private int colorsIndex0;
+    public int ColorsIndex0
+    {
+      get { return this.colorsIndex0; }
+      set { this.SetProperty(ref this.colorsIndex0, value); }
+    }
 
 
-
+    private int colorsIndex;
+    public int ColorsIndex
+    {
+      get { return this.colorsIndex; }
+      set { this.SetProperty(ref this.colorsIndex, value); }
+    }
+    */
 
 
 
@@ -69,14 +83,18 @@ namespace CDTimer.Model
       get { return this.startTitle; }
       set { this.SetProperty(ref this.startTitle, value); }
     }
-
-
-
-    private int colorsIndex0;
-    public int ColorsIndex0
+    private Color labelColor0;
+    public Color LabelColor0
     {
-      get { return this.colorsIndex0; }
-      set { this.SetProperty(ref this.colorsIndex0, value); }
+      get { return this.labelColor0; }
+      set { this.SetProperty(ref this.labelColor0, value); }
+    }
+
+    private bool uporDown;
+    public bool UporDown
+    {
+      get { return this.uporDown; }
+      set { this.SetProperty(ref this.uporDown, value); }
     }
 
 
@@ -95,20 +113,11 @@ namespace CDTimer.Model
       set { this.SetProperty(ref this.timesIndex, value); }
     }
 
-    private int colorsIndex;
-    public int ColorsIndex
+    private Color labelColor1;
+    public Color LabelColor1
     {
-      get { return this.colorsIndex; }
-      set { this.SetProperty(ref this.colorsIndex, value); }
-    }
-
-
-
-    private Int32 endBellIndex;
-    public Int32 EndBellIndex
-    {
-      get { return this.endBellIndex; }
-      set { this.SetProperty(ref this.endBellIndex, value); }
+      get { return this.labelColor1; }
+      set { this.SetProperty(ref this.labelColor1, value); }
     }
 
     private Int32 preBellIndex;
@@ -118,6 +127,7 @@ namespace CDTimer.Model
       set { this.SetProperty(ref this.preBellIndex, value); }
     }
 
+    /*
     private string preBellValue;
     public string PreBellValue
     {
@@ -138,6 +148,7 @@ namespace CDTimer.Model
       get { return this.preBellMinutesValue; }
       set { this.SetProperty(ref this.preBellMinutesValue, value); }
     }
+    */
 
     //second
     private string secondTitle;
@@ -153,20 +164,20 @@ namespace CDTimer.Model
       get { return this.timesIndex2; }
       set { this.SetProperty(ref this.timesIndex2, value); }
     }
-
-    private int colorsIndex2;
-    public int ColorsIndex2
+    private Color labelColor2;
+    public Color LabelColor2
     {
-      get { return this.colorsIndex2; }
-      set { this.SetProperty(ref this.colorsIndex2, value); }
+      get { return this.labelColor2; }
+      set { this.SetProperty(ref this.labelColor2, value); }
     }
 
-    private Int32 endBellIndex2;
-    public Int32 EndBellIndex2
+    private Int32 endBellIndex;
+    public Int32 EndBellIndex
     {
-      get { return this.endBellIndex2; }
-      set { this.SetProperty(ref this.endBellIndex2, value); }
+      get { return this.endBellIndex; }
+      set { this.SetProperty(ref this.endBellIndex, value); }
     }
+
 
     //third
     private string thirdTitle;
@@ -184,13 +195,21 @@ namespace CDTimer.Model
     }
 
 
-
-    private int colorsIndex3;
-    public int ColorsIndex3
+    private Color labelColor3;
+    public Color LabelColor3
     {
-      get { return this.colorsIndex3; }
-      set { this.SetProperty(ref this.colorsIndex3, value); }
+      get { return this.labelColor3; }
+      set { this.SetProperty(ref this.labelColor3, value); }
     }
+
+    private Int32 endBellIndex2;
+    public Int32 EndBellIndex2
+    {
+      get { return this.endBellIndex2; }
+      set { this.SetProperty(ref this.endBellIndex2, value); }
+    }
+
+
 
     //common
     private string labelTime;
@@ -214,15 +233,30 @@ namespace CDTimer.Model
       set { this.SetProperty(ref this.titleBlock, value); }
     }
 
-    private bool uporDown;
-    public bool UporDown
+    private Color labelColort;
+    public Color LabelColort
     {
-      get { return this.uporDown; }
-      set { this.SetProperty(ref this.uporDown, value); }
+      get { return this.labelColort; }
+      set { this.SetProperty(ref this.labelColort, value); }
     }
 
     //add
     /*
+     * 
+     * 
+     *     private int colorsIndex3;
+    public int ColorsIndex3
+    {
+      get { return this.colorsIndex3; }
+      set { this.SetProperty(ref this.colorsIndex3, value); }
+    }
+     * 
+     *     private int colorsIndex2;
+    public int ColorsIndex2
+    {
+      get { return this.colorsIndex2; }
+      set { this.SetProperty(ref this.colorsIndex2, value); }
+    }
     private TimeSpan firstTimeSpan;
     public TimeSpan FirstTimeSpan
     {
@@ -244,7 +278,6 @@ namespace CDTimer.Model
       set { this.SetProperty(ref this.thirdTimeSpan, value); }
     }
 
-            */
 
 
     /// <summary>
@@ -280,35 +313,9 @@ namespace CDTimer.Model
       set { this.SetProperty(ref this.labelBrush3, value); }
     }
 
-
-    private Color labelColor0;
-    public Color LabelColor0
-    {
-      get { return this.labelColor0; }
-      set { this.SetProperty(ref this.labelColor0, value); }
-    }
-
-    private Color labelColor1;
-    public Color LabelColor1
-    {
-      get { return this.labelColor1; }
-      set { this.SetProperty(ref this.labelColor1, value); }
-    }
+            */
 
 
-    private Color labelColor2;
-    public Color LabelColor2
-    {
-      get { return this.labelColor2; }
-      set { this.SetProperty(ref this.labelColor2, value); }
-    }
-
-    private Color labelColor3;
-    public Color LabelColor3
-    {
-      get { return this.labelColor3; }
-      set { this.SetProperty(ref this.labelColor3, value); }
-    }
 
     //not_use
     /*
@@ -389,11 +396,11 @@ namespace CDTimer.Model
 
       this._count = 0;
 
-      var color = conv.selectColor(ColorsIndex);
+      //var color = conv.selectColor(ColorsIndex);
       //this.ForegroundColor = color;
       this.ForegroundColor = new SolidColorBrush(LabelColor0);
       this.TitleBlock = this.StartTitle;
-      time = 0;
+      //time = 0;
     }
 
     private async void playsound(int index)
@@ -547,6 +554,8 @@ namespace CDTimer.Model
       */
     }
 
+
+      /*
     private void SecondTime()
     {
       TimeSpan ts2 = new TimeSpan(0, (int)this.TimesIndex2, 0);
@@ -574,29 +583,46 @@ namespace CDTimer.Model
       _count = 0;
     }
 
+*/
+
 
 
     public void SaveCount()
     {
       var settings = ApplicationData.Current.RoamingSettings;
 
+      //start
+      settings.Values["start_title"] = this.StartTitle;
+      settings.Values["label_color0"] = this.LabelColor0.ToString();
+      settings.Values["up_down"] = this.UporDown;
+
+
+
       //first
       settings.Values["first_title"] = this.FirstTitle;
       settings.Values["times_index"] = this.TimesIndex;
-      settings.Values["colors_index"] = this.ColorsIndex;
-      settings.Values["end_bell_index"] = this.EndBellIndex;
+      settings.Values["label_color1"] = this.LabelColor1.ToString();
       settings.Values["pre_bell_index"] = this.PreBellIndex;
-      settings.Values["pre_bell_value"] = this.PreBellValue;
-      settings.Values["pre_bell_minutes_index"] = this.PreBellMinutesIndex;
-      settings.Values["pre_bell_minutes_value"] = this.PreBellMinutesValue;
+      //settings.Values["colors_index"] = this.ColorsIndex;
+      //settings.Values["pre_bell_value"] = this.PreBellValue;
+      //settings.Values["pre_bell_minutes_index"] = this.PreBellMinutesIndex;
+      //settings.Values["pre_bell_minutes_value"] = this.PreBellMinutesValue;
+
+
       //second
+      settings.Values["end_bell_index"] = this.EndBellIndex;
       settings.Values["second_title"] = this.SecondTitle;
       settings.Values["times_index2"] = this.TimesIndex2;
-      settings.Values["colors_index2"] = this.ColorsIndex2;
-      settings.Values["end_bell_index2"] = this.EndBellIndex2;
+      settings.Values["label_color2"] = this.LabelColor2.ToString();
+      //settings.Values["colors_index2"] = this.ColorsIndex2;
+
+
       //third
       settings.Values["third_title"] = this.ThirdTitle;
-      settings.Values["colors_index3"] = this.ColorsIndex3;
+      settings.Values["end_bell_index2"] = this.EndBellIndex2;
+      settings.Values["label_color3"] = this.LabelColor3.ToString();
+      settings.Values["times_index3"] = this.TimesIndex3;
+      //settings.Values["colors_index3"] = this.ColorsIndex3;
       //notuse
       /*
       settings.Values["hours_index"] = this.HoursIndex;
@@ -605,7 +631,24 @@ namespace CDTimer.Model
       settings.Values["end_bell_index3"] = this.EndBellIndex3;
       */
 
+
+      System.Diagnostics.Debug.WriteLine("SaveCount is finished!!!!!!!!!!");
+      System.Diagnostics.Debug.WriteLine(this.LabelColor0.ToString()+"!!!!!!!!!!");
     }
+
+
+
+    public SolidColorBrush GetSolidColorBrush(string hex)
+    {
+      hex = hex.Replace("#", string.Empty);
+      byte a = (byte)(Convert.ToUInt32(hex.Substring(0, 2), 16));
+      byte r = (byte)(Convert.ToUInt32(hex.Substring(2, 2), 16));
+      byte g = (byte)(Convert.ToUInt32(hex.Substring(4, 2), 16));
+      byte b = (byte)(Convert.ToUInt32(hex.Substring(6, 2), 16));
+      SolidColorBrush myBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(a, r, g, b));
+      return myBrush;
+    }
+
 
     public void LoadCount()
     {
@@ -613,6 +656,24 @@ namespace CDTimer.Model
       var temp = default(object);
       try
       {
+
+        //start
+        if (settings.Values.TryGetValue("start_title", out temp))
+        {
+          this.StartTitle = (string)temp;
+        }
+        
+        if (settings.Values.TryGetValue("label_color0", out temp))
+        {
+          this.LabelColor0 = GetSolidColorBrush((string)temp).Color; 
+        }
+        
+        
+        if (settings.Values.TryGetValue("up_down", out temp))
+        {
+          this.UporDown = (bool)temp;
+        }
+
         //first
         if (settings.Values.TryGetValue("first_title", out temp))
         {
@@ -622,29 +683,14 @@ namespace CDTimer.Model
         {
           this.TimesIndex = (Int32)temp;
         }
-        if (settings.Values.TryGetValue("colors_index", out temp))
-        {
-          this.ColorsIndex = (int)temp;
-        }
+
         if (settings.Values.TryGetValue("pre_bell_index", out temp))
         {
           this.PreBellIndex = (Int32)temp;
         }
-        if (settings.Values.TryGetValue("pre_bell_value", out temp))
+        if (settings.Values.TryGetValue("label_color1", out temp))
         {
-          this.PreBellValue = (string)temp;
-        }
-        if (settings.Values.TryGetValue("pre_bell_minutes_index", out temp))
-        {
-          this.PreBellMinutesIndex = (Int32)temp;
-        }
-        if (settings.Values.TryGetValue("pre_bell_minutes_value", out temp))
-        {
-          this.PreBellMinutesValue = (string)temp;
-        }
-        if (settings.Values.TryGetValue("end_bell_index", out temp))
-        {
-          this.EndBellIndex = (Int32)temp;
+          this.LabelColor1 = GetSolidColorBrush((string)temp).Color; 
         }
 
         //second
@@ -656,13 +702,14 @@ namespace CDTimer.Model
         {
           this.TimesIndex2 = (Int32)temp;
         }
-        if (settings.Values.TryGetValue("colors_index2", out temp))
+
+        if (settings.Values.TryGetValue("end_bell_index", out temp))
         {
-          this.ColorsIndex2 = (int)temp;
+          this.EndBellIndex = (Int32)temp;
         }
-        if (settings.Values.TryGetValue("end_bell_index2", out temp))
+        if (settings.Values.TryGetValue("label_color2", out temp))
         {
-          this.EndBellIndex2 = (Int32)temp;
+          this.LabelColor2 = GetSolidColorBrush((string)temp).Color; 
         }
 
         //third
@@ -670,17 +717,63 @@ namespace CDTimer.Model
         {
           this.ThirdTitle = (string)temp;
         }
-        if (settings.Values.TryGetValue("colors_index3", out temp))
+
+        if (settings.Values.TryGetValue("end_bell_index2", out temp))
         {
-          this.ColorsIndex3 = (int)temp;
+          this.EndBellIndex2 = (Int32)temp;
         }
+        if (settings.Values.TryGetValue("times_index3", out temp))
+        {
+          this.TimesIndex3 = (int)temp;
+        }
+        if (settings.Values.TryGetValue("label_color3", out temp))
+        {
+          this.LabelColor3 = GetSolidColorBrush((string)temp).Color; 
+        }
+
+        System.Diagnostics.Debug.WriteLine("!!!!!!!!!!!!!!!!!!" + this.LabelColort + "??????????");
+
+
       }
 
       catch (Exception ex)
       {
-
+        System.Diagnostics.Debug.WriteLine("!!!!!!!!!!!!!!!!!!" + ex.Message);
       }
 
+
+      /*
+if (settings.Values.TryGetValue("colors_index", out temp))
+{
+  this.ColorsIndex = (int)temp;
+}
+*/
+      /*
+      if (settings.Values.TryGetValue("colors_index2", out temp))
+      {
+        this.ColorsIndex2 = (int)temp;
+      }
+      */
+      /*
+      if (settings.Values.TryGetValue("pre_bell_value", out temp))
+      {
+        this.PreBellValue = (string)temp;
+      }
+      if (settings.Values.TryGetValue("pre_bell_minutes_index", out temp))
+      {
+        this.PreBellMinutesIndex = (Int32)temp;
+      }
+      if (settings.Values.TryGetValue("pre_bell_minutes_value", out temp))
+      {
+        this.PreBellMinutesValue = (string)temp;
+      }
+      */
+      /*
+      if (settings.Values.TryGetValue("colors_index3", out temp))
+      {
+        this.ColorsIndex3 = (int)temp;
+      }
+      */
       /*
       if (settings.Values.TryGetValue("hours_index", out temp))
       {
@@ -690,10 +783,7 @@ namespace CDTimer.Model
       {
         this.MinutesIndex = (double)temp;
       }
-      if (settings.Values.TryGetValue("times_index3", out temp))
-      {
-        this.TimesIndex3 = (double)temp;
-      }
+
       if (settings.Values.TryGetValue("end_bell_index3", out temp))
       {
         this.EndBellIndex3 = (Int32)temp;

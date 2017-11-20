@@ -75,25 +75,44 @@ colors.Add( new Color( "Pink", color = new SolidColorBrush(Windows.UI.Colors.Pin
       timeFirst.SelectedIndex = 0;
       timeSecond.SelectedIndex = 0;
       timeThird.SelectedIndex = 0;
-      myColorPicker0.Color = Colors.Green;
-      myColorPicker1.Color = Colors.Green;
-      myColorPicker2.Color = Colors.Yellow;
-      myColorPicker3.Color = Colors.Red;
+      //myColorPicker0.Color = Colors.Green;
+      //myColorPicker1.Color = Colors.Green;
+      //myColorPicker2.Color = Colors.Yellow;
+      //myColorPicker3.Color = Colors.Red;
 
       //if(ViewModel.LabelColor2 == null)
       //{
-      ViewModel.LabelColor0 = myColorPicker0.Color;
-      ViewModel.LabelColor1 = myColorPicker1.Color;
-      ViewModel.LabelColor2 = myColorPicker2.Color;
-      ViewModel.LabelColor3 = myColorPicker3.Color;
+
+      //値が格納されていない場合の処理とする必要がある。
+      if(ViewModel.LabelColor0.ToString() == "#00000000")
+      {
+        ViewModel.LabelColor0 = myColorPicker0.Color;
+      }
+      if (ViewModel.LabelColor1.ToString() == "#00000000")
+      {
+        ViewModel.LabelColor1 = myColorPicker0.Color;
+      }
+      if (ViewModel.LabelColor2.ToString() == "#00000000")
+      {
+        ViewModel.LabelColor2 = myColorPicker0.Color;
+      }
+      if (ViewModel.LabelColor3.ToString() == "#00000000")
+      {
+        ViewModel.LabelColor3 = myColorPicker0.Color;
+      }
+      //ViewModel.LabelColor1 = myColorPicker1.Color;
+      //ViewModel.LabelColor2 = myColorPicker2.Color;
+      //ViewModel.LabelColor3 = myColorPicker3.Color;
       //}
 
 
       //colorCombo2.ItemsSource = colors;
-      ViewModel.StartTitle = startText.Text;
-      ViewModel.FirstTitle = firstText.Text;
-      ViewModel.SecondTitle = secondText.Text;
-      ViewModel.ThirdTitle = thirdText.Text;
+
+      
+      //ViewModel.StartTitle = startText.Text;
+      //ViewModel.FirstTitle = firstText.Text;
+      //ViewModel.SecondTitle = secondText.Text;
+      //ViewModel.ThirdTitle = thirdText.Text;
 
       ViewModel.TimerReset();
 

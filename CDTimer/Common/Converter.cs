@@ -52,7 +52,7 @@ namespace PresenTimer.Common
             {
                 return new SolidColorBrush(Colors.Blue);
             }
-            System.Diagnostics.Debug.WriteLine("!!!!!!!!" + value.ToString());
+            //System.Diagnostics.Debug.WriteLine("!!!!!!!!" + value.ToString());
 
             if (value is Color color)
             {

@@ -104,9 +104,6 @@
     </Compile>
     <Compile Include="Common\Converter.cs" />
     <Compile Include="Common\CountdowsClass.cs" />
-    <Compile Include="SettingPage.xaml.cs">
-      <DependentUpon>SettingPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Common\CommonClass.cs" />
     <Compile Include="CountPage.xaml.cs">
@@ -145,10 +142,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="SettingPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="CountPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

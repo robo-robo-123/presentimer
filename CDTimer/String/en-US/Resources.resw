@@ -117,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BellInput.Header" xml:space="preserve">
-    <value>Setting The number of chimes</value>
+  <data name="BellTimes.Text" xml:space="preserve">
+    <value>times</value>
   </data>
   <data name="btw.Label" xml:space="preserve">
     <value>Exit FullScreen</value>
@@ -126,17 +126,17 @@
   <data name="btw.ToolTipService.ToolTip" xml:space="preserve">
     <value>This Button is Exit FullScreen</value>
   </data>
-  <data name="ColorInput.Header" xml:space="preserve">
+  <data name="ColorButton.Content" xml:space="preserve">
     <value>Setting the text's color</value>
   </data>
-  <data name="FirstSetting.Text" xml:space="preserve">
-    <value>Setting the First Item</value>
+  <data name="FirstList.Header" xml:space="preserve">
+    <value>Setting of first section</value>
   </data>
   <data name="FirstTitle.Header" xml:space="preserve">
     <value>Setting this Title (Enter is save)</value>
   </data>
-  <data name="FirstTitle.Text" xml:space="preserve">
-    <value>Time remaining</value>
+  <data name="FirstTitle.PlaceholderText" xml:space="preserve">
+    <value>Example: presentation time</value>
   </data>
   <data name="fs.Label" xml:space="preserve">
     <value>FullScreen</value>
@@ -144,20 +144,11 @@
   <data name="fs.ToolTipService.ToolTip" xml:space="preserve">
     <value>This Button is FullScreen</value>
   </data>
-  <data name="LabelTitle.Text" xml:space="preserve">
-    <value>Time remaining</value>
-  </data>
   <data name="Pause.Label" xml:space="preserve">
     <value>Pause</value>
   </data>
   <data name="Pause.ToolTipService.ToolTip" xml:space="preserve">
     <value>This Button is Pause</value>
-  </data>
-  <data name="PreBellIndex.Header" xml:space="preserve">
-    <value>Setting The number of chimes for the preliminary bell</value>
-  </data>
-  <data name="PreBellTime.Header" xml:space="preserve">
-    <value>Setting time for the preliminary bell</value>
   </data>
   <data name="PreviewTitle.Text" xml:space="preserve">
     <value>Test play (10 times)</value>
@@ -168,14 +159,14 @@
   <data name="Reset.ToolTipService.ToolTip" xml:space="preserve">
     <value>This Button is Reset</value>
   </data>
-  <data name="SecondSetting.Text" xml:space="preserve">
-    <value>Setting the Second Item</value>
+  <data name="SecondList.Header" xml:space="preserve">
+    <value>Setting of second section</value>
   </data>
   <data name="SecondTitle.Header" xml:space="preserve">
     <value>Setting this Title (Enter is save)</value>
   </data>
-  <data name="SecondTitle.Text" xml:space="preserve">
-    <value>Questions and answers</value>
+  <data name="SecondTitle.PlaceholderText" xml:space="preserve">
+    <value>Example: Questions and answers</value>
   </data>
   <data name="Start.Label" xml:space="preserve">
     <value>Start</value>
@@ -189,19 +180,49 @@
   <data name="Stop.ToolTipService.ToolTip" xml:space="preserve">
     <value>This Button is Stop</value>
   </data>
-  <data name="ThirdSetting.Text" xml:space="preserve">
-    <value>Setting the Third Item</value>
+  <data name="ThirdList.Header" xml:space="preserve">
+    <value>Setting of third section</value>
   </data>
   <data name="ThirdTitle.Header" xml:space="preserve">
     <value>Setting this Title (Enter is save)</value>
   </data>
-  <data name="ThirdTitle.Text" xml:space="preserve">
-    <value>Overtime hours</value>
+  <data name="ThirdTitle.PlaceholderText" xml:space="preserve">
+    <value>Example: Overtime hours</value>
   </data>
   <data name="TimeInput.Header" xml:space="preserve">
     <value>Setting this Time</value>
   </data>
   <data name="AppName" xml:space="preserve">
     <value>PresenTimer</value>
+  </data>
+  <data name="AfterMinuts.Text" xml:space="preserve">
+    <value>minuts after</value>
+  </data>
+  <data name="PinP.Label" xml:space="preserve">
+    <value>Always display in front</value>
+  </data>
+  <data name="SampleText.Text" xml:space="preserve">
+    <value>Color sample</value>
+  </data>
+  <data name="StartList.Header" xml:space="preserve">
+    <value>Setting of start section</value>
+  </data>
+  <data name="StartTitle.Header" xml:space="preserve">
+    <value>Setting this Title (Enter is save)</value>
+  </data>
+  <data name="StartTitle.PlaceholderText" xml:space="preserve">
+    <value>Example: presentation time</value>
+  </data>
+  <data name="Title.Header" xml:space="preserve">
+    <value>Setting of Label</value>
+  </data>
+  <data name="UnPinP" xml:space="preserve">
+    <value>Return to normal window</value>
+  </data>
+  <data name="UpDown.OffContent" xml:space="preserve">
+    <value>count up</value>
+  </data>
+  <data name="UpDown.OnContent" xml:space="preserve">
+    <value>count down</value>
   </data>
 </root>

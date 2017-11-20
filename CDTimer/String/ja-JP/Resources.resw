@@ -117,26 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BellInput.Header" xml:space="preserve">
-    <value>回数</value>
-  </data>
   <data name="btw.Label" xml:space="preserve">
     <value>全画面解除</value>
   </data>
   <data name="btw.ToolTipService.ToolTip" xml:space="preserve">
     <value>全画面を解除します</value>
   </data>
-  <data name="ColorInput.Header" xml:space="preserve">
-    <value>文字色の設定</value>
-  </data>
-  <data name="FirstSetting.Text" xml:space="preserve">
-    <value>一区切り目の設定</value>
-  </data>
-  <data name="FirstTitle.Header" xml:space="preserve">
+  <data name="Title.Header" xml:space="preserve">
     <value>ラベル設定</value>
-  </data>
-  <data name="FirstTitle.Text" xml:space="preserve">
-    <value>残り発表時間</value>
   </data>
   <data name="fs.Label" xml:space="preserve">
     <value>全画面化</value>
@@ -144,20 +132,11 @@
   <data name="fs.ToolTipService.ToolTip" xml:space="preserve">
     <value>全画面化します</value>
   </data>
-  <data name="LabelTitle.Text" xml:space="preserve">
-    <value>残り時間</value>
-  </data>
   <data name="Pause.Label" xml:space="preserve">
     <value>一時停止</value>
   </data>
   <data name="Pause.ToolTipService.ToolTip" xml:space="preserve">
     <value>一時停止します</value>
-  </data>
-  <data name="PreBellIndex.Header" xml:space="preserve">
-    <value>回数</value>
-  </data>
-  <data name="PreBellTime.Header" xml:space="preserve">
-    <value>予鈴の時間の設定</value>
   </data>
   <data name="PreviewTitle.Text" xml:space="preserve">
     <value>テスト再生（10倍速）</value>
@@ -167,15 +146,6 @@
   </data>
   <data name="Reset.ToolTipService.ToolTip" xml:space="preserve">
     <value>リセットします</value>
-  </data>
-  <data name="SecondSetting.Text" xml:space="preserve">
-    <value>二区切り目の設定</value>
-  </data>
-  <data name="SecondTitle.Header" xml:space="preserve">
-    <value>ラベル設定</value>
-  </data>
-  <data name="SecondTitle.Text" xml:space="preserve">
-    <value>質疑応答時間</value>
   </data>
   <data name="Start.Label" xml:space="preserve">
     <value>スタート</value>
@@ -189,15 +159,6 @@
   <data name="Stop.ToolTipService.ToolTip" xml:space="preserve">
     <value>ストップします</value>
   </data>
-  <data name="ThirdSetting.Text" xml:space="preserve">
-    <value>三つ目の設定</value>
-  </data>
-  <data name="ThirdTitle.Header" xml:space="preserve">
-    <value>ラベル設定</value>
-  </data>
-  <data name="ThirdTitle.Text" xml:space="preserve">
-    <value>超過時間</value>
-  </data>
   <data name="TimeInput.Header" xml:space="preserve">
     <value>カウント時間の設定</value>
   </data>
@@ -205,9 +166,63 @@
     <value>ぷれぜんたいまー</value>
   </data>
   <data name="StartTitle.Header" xml:space="preserve">
-    <value>ラベル設定</value>
+    <value>文章を入力してください</value>
   </data>
-  <data name="StartTitle.Text" xml:space="preserve">
-    <value>残り発表時間</value>
+  <data name="ColorButton.Content" xml:space="preserve">
+    <value>文字色の設定</value>
+  </data>
+  <data name="SampleText.Text" xml:space="preserve">
+    <value>カラーサンプル</value>
+  </data>
+  <data name="StartList.Header" xml:space="preserve">
+    <value>スタート時の設定</value>
+  </data>
+  <data name="UpDown.OffContent" xml:space="preserve">
+    <value>カウントアップ</value>
+  </data>
+  <data name="UpDown.OnContent" xml:space="preserve">
+    <value>カウントダウン</value>
+  </data>
+  <data name="AfterMinuts.Text" xml:space="preserve">
+    <value>分後</value>
+  </data>
+  <data name="BellTimes.Text" xml:space="preserve">
+    <value>回</value>
+  </data>
+  <data name="FirstList.Header" xml:space="preserve">
+    <value>一区切り目の設定</value>
+  </data>
+  <data name="FirstTitle.Header" xml:space="preserve">
+    <value>文章を入力してください</value>
+  </data>
+  <data name="FirstTitle.PlaceholderText" xml:space="preserve">
+    <value>例：発表時間</value>
+  </data>
+  <data name="PinP.Label" xml:space="preserve">
+    <value>常に手前表示</value>
+  </data>
+  <data name="SecondList.Header" xml:space="preserve">
+    <value>二区切り目の設定</value>
+  </data>
+  <data name="SecondTitle.Header" xml:space="preserve">
+    <value>文章を入力してください</value>
+  </data>
+  <data name="SecondTitle.PlaceholderText" xml:space="preserve">
+    <value>例：質疑応答時間</value>
+  </data>
+  <data name="StartTitle.PlaceholderText" xml:space="preserve">
+    <value>例：発表時間</value>
+  </data>
+  <data name="ThirdList.Header" xml:space="preserve">
+    <value>三区切り目の設定</value>
+  </data>
+  <data name="ThirdTitle.Header" xml:space="preserve">
+    <value>文章を入力してください</value>
+  </data>
+  <data name="ThirdTitle.PlaceholderText" xml:space="preserve">
+    <value>例：超過時間</value>
+  </data>
+  <data name="UnPinP" xml:space="preserve">
+    <value>通常に戻す</value>
   </data>
 </root>

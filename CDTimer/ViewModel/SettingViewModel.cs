@@ -21,11 +21,12 @@ namespace CDTimer.ViewModel
       set { this.Model.StartTitle = value; }
     }
 
-    public int ColorsIndex0
+    public Color LabelColor0
     {
-      get { return this.Model.ColorsIndex0; }
-      set { this.Model.ColorsIndex0 = value; }
+      get { return this.Model.LabelColor0; }
+      set { this.Model.LabelColor0 = value; }
     }
+
 
     //first_section
     public string FirstTitle
@@ -40,11 +41,13 @@ namespace CDTimer.ViewModel
       set { this.Model.TimesIndex = value; }
     }
 
-    public int ColorsIndex
+    public Color LabelColor1
     {
-      get { return this.Model.ColorsIndex; }
-      set { this.Model.ColorsIndex = value; }
+      get { return this.Model.LabelColor1; }
+      set { this.Model.LabelColor1 = value; }
     }
+
+
 
     public Int32 PreBellIndex
     {
@@ -52,6 +55,7 @@ namespace CDTimer.ViewModel
       set { this.Model.PreBellIndex = value; }
     }
 
+    /*
     public string PreBellValue
     {
       get { return this.Model.PreBellValue; }
@@ -69,12 +73,8 @@ namespace CDTimer.ViewModel
       get { return this.Model.PreBellMinutesValue; }
       set { this.Model.PreBellMinutesValue = value; }
     }
+    */
 
-    public Int32 EndBellIndex
-    {
-      get { return this.Model.EndBellIndex; }
-      set { this.Model.EndBellIndex = value; }
-    }
 
 
     //second_section
@@ -90,19 +90,16 @@ namespace CDTimer.ViewModel
       set { this.Model.TimesIndex2 = value; }
     }
 
-    public int ColorsIndex2
+    public Color LabelColor2
     {
-      get { return this.Model.ColorsIndex2; }
-      set { this.Model.ColorsIndex2 = value; }
+      get { return this.Model.LabelColor2; }
+      set { this.Model.LabelColor2 = value; }
     }
 
-
-
-
-    public Int32 EndBellIndex2
+    public Int32 EndBellIndex
     {
-      get { return this.Model.EndBellIndex2; }
-      set { this.Model.EndBellIndex2 = value; }
+      get { return this.Model.EndBellIndex; }
+      set { this.Model.EndBellIndex = value; }
     }
 
 
@@ -119,11 +116,17 @@ namespace CDTimer.ViewModel
       set { this.Model.TimesIndex3 = value; }
     }
 
-    public int ColorsIndex3
+    public Color LabelColor3
     {
-      get { return this.Model.ColorsIndex3; }
-      set { this.Model.ColorsIndex3 = value; }
+      get { return this.Model.LabelColor3; }
+      set { this.Model.LabelColor3 = value; }
     }
+    public Int32 EndBellIndex2
+    {
+      get { return this.Model.EndBellIndex2; }
+      set { this.Model.EndBellIndex2 = value; }
+    }
+
 
     //common
     public string LabelTime
@@ -153,6 +156,30 @@ namespace CDTimer.ViewModel
 
     /*
     //not_use 
+        public int ColorsIndex0
+    {
+      get { return this.Model.ColorsIndex0; }
+      set { this.Model.ColorsIndex0 = value; }
+    }
+
+          public int ColorsIndex
+    {
+      get { return this.Model.ColorsIndex; }
+      set { this.Model.ColorsIndex = value; }
+    }
+
+    public int ColorsIndex3
+    {
+      get { return this.Model.ColorsIndex3; }
+      set { this.Model.ColorsIndex3 = value; }
+    }
+
+    public int ColorsIndex2
+    {
+      get { return this.Model.ColorsIndex2; }
+      set { this.Model.ColorsIndex2 = value; }
+    }
+
     public Int32 HoursIndex
     {
       get { return this.Model.HoursIndex; }
@@ -208,30 +235,13 @@ namespace CDTimer.ViewModel
   }
   */
 
-    public Color LabelColor0
-    {
-      get { return this.Model.LabelColor0; }
-      set { this.Model.LabelColor0 = value; }
-    }
 
-    public Color LabelColor1
-    {
-      get { return this.Model.LabelColor1; }
-      set { this.Model.LabelColor1 = value; }
-    }
 
-    public Color LabelColor2
-    {
-      get { return this.Model.LabelColor2; }
-      set { this.Model.LabelColor2 = value; }
-    }
 
-    public Color LabelColor3
-    {
-      get { return this.Model.LabelColor3; }
-      set { this.Model.LabelColor3 = value; }
-    }
 
+
+
+    /*
 
 
     public Brush LabelBrush0
@@ -258,7 +268,6 @@ namespace CDTimer.ViewModel
       set { this.Model.LabelBrush3 = value; }
     }
 
-    /*
     public Brush LabelColorBrush2
     {
         get { return new SolidColorBrush(this.LabelColor2); }
@@ -284,13 +293,16 @@ namespace CDTimer.ViewModel
       get { return this.Model.LabelTime; }
       set { this.Model.LabelTime = value; }
     }
-*/
-    //method
 
-    public Brush GetBrush(Color color)
+     public Brush GetBrush(Color color)
     {
       return new SolidColorBrush(color);
     }
+
+
+       */
+    //method
+
 
     public void TimerStart()
     {
