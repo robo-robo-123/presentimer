@@ -86,18 +86,22 @@ colors.Add( new Color( "Pink", color = new SolidColorBrush(Windows.UI.Colors.Pin
       //値が格納されていない場合の処理とする必要がある。
       if(ViewModel.LabelColor0.ToString() == "#00000000")
       {
+        myColorPicker0.Color = Colors.Green;
         ViewModel.LabelColor0 = myColorPicker0.Color;
       }
       if (ViewModel.LabelColor1.ToString() == "#00000000")
       {
+        myColorPicker0.Color = Colors.Green;
         ViewModel.LabelColor1 = myColorPicker0.Color;
       }
       if (ViewModel.LabelColor2.ToString() == "#00000000")
       {
+        myColorPicker2.Color = Colors.Yellow;
         ViewModel.LabelColor2 = myColorPicker0.Color;
       }
       if (ViewModel.LabelColor3.ToString() == "#00000000")
       {
+        myColorPicker3.Color = Colors.Red;
         ViewModel.LabelColor3 = myColorPicker0.Color;
       }
       //ViewModel.LabelColor1 = myColorPicker1.Color;

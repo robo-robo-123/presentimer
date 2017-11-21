@@ -87,7 +87,7 @@
                                         <Button.Flyout>
                                             <Flyout>
                                                 <ColorPicker x:Name="myColorPicker0" IsColorChannelTextInputVisible="False"
-                                                    IsHexInputVisible="False" ColorChanged="myColorPicker_ColorChanged" Color="{x:Bind ViewModel.LabelColor0, Mode=TwoWay}" />
+                                                     ColorChanged="myColorPicker_ColorChanged" Color="{x:Bind ViewModel.LabelColor0, Mode=TwoWay}" />
                                             </Flyout>
                                         </Button.Flyout>
                                     </Button>
@@ -120,7 +120,7 @@
                                         <Button.Flyout>
                                             <Flyout>
                                                 <ColorPicker x:Name="myColorPicker1" IsColorChannelTextInputVisible="False"
-                                                    IsHexInputVisible="False" ColorChanged="myColorPicker_ColorChanged" Color="{x:Bind ViewModel.LabelColor1, Mode=TwoWay}" />
+                                                     ColorChanged="myColorPicker_ColorChanged" Color="{x:Bind ViewModel.LabelColor1, Mode=TwoWay}" />
                                             </Flyout>
                                         </Button.Flyout>
                                     </Button>
@@ -155,7 +155,7 @@
                                         <Button.Flyout>
                                             <Flyout>
                                                 <ColorPicker x:Name="myColorPicker2" IsColorChannelTextInputVisible="False"
-                                                    IsHexInputVisible="False" ColorChanged="myColorPicker_ColorChanged" Color="{x:Bind ViewModel.LabelColor2, Mode=TwoWay}" />
+                                                     ColorChanged="myColorPicker_ColorChanged" Color="{x:Bind ViewModel.LabelColor2, Mode=TwoWay}" />
                                             </Flyout>
                                         </Button.Flyout>
                                     </Button>
@@ -189,7 +189,7 @@
                                         <Button.Flyout>
                                             <Flyout>
                                                 <ColorPicker x:Name="myColorPicker3" IsColorChannelTextInputVisible="False"
-                                                    IsHexInputVisible="False" ColorChanged="myColorPicker_ColorChanged" Color="{x:Bind ViewModel.LabelColor3, Mode=TwoWay}" />
+                                                     ColorChanged="myColorPicker_ColorChanged" Color="{x:Bind ViewModel.LabelColor3, Mode=TwoWay}" />
                                             </Flyout>
                                         </Button.Flyout>
                                     </Button>
